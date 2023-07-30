@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background-color: #F4F5F9;
+  overflow: hidden;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(black, 0.4);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}

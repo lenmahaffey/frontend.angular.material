@@ -10,11 +10,11 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { MainLayoutModule } from './main-layout/main-layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     PagesModule,
     ServicesModule,
     SharedModule,
+    MainLayoutModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: '', component: WelcomeComponent },
