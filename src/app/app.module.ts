@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MainLayoutModule } from './main-layout/main-layout.module';
+import { AlertService } from './services/alert/alert.service';
+import { NotificationService } from './services/notification/notification.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { MainLayoutModule } from './main-layout/main-layout.module';
       { path: '**', component: PageNotFoundComponent }
     ]),
   ],
-  providers: [],
+  providers: [AlertService, NotificationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

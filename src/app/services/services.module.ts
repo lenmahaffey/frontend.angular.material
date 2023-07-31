@@ -16,6 +16,10 @@ import { NotificationComponent } from './notification/notification/notification.
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    NotificationManagerComponent,
+    AlertManagerComponent
   ]
 })
 export class ServicesModule { }

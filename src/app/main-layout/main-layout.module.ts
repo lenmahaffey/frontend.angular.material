@@ -8,6 +8,7 @@ import { MainLayoutComponent } from './main-layout.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from '../pages/welcome/welcome.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
+import { ServicesModule } from '../services/services.module';
 
 
 
@@ -20,6 +21,7 @@ import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.co
     MainLayoutComponent
   ],
   imports: [
+    ServicesModule,
     CommonModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
