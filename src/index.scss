@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@use '/src/appTheme.scss' as *;
+
 html, body {
   height: 100%;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  background-color: #F4F5F9;
+  background-color: $appWhite;
   overflow: hidden;
 }
 /* Track */

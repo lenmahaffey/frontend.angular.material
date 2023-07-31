@@ -1,6 +1,8 @@
+@use '/src/appTheme.scss' as *;
 #footer{
   height: 100%;
   display: flex;
   align-items: center;
-  // background-color: darkgoldenrod;
+  background-color: $appBlack;
+  color: $appWhite;
 }
