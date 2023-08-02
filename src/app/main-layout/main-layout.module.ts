@@ -23,11 +23,7 @@ import { ServicesModule } from '../services/services.module';
   imports: [
     ServicesModule,
     CommonModule,
-    RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', component: WelcomeComponent },
-      { path: '**', component: PageNotFoundComponent }
-    ]),
+    RouterModule
   ],
   exports:[
     MainLayoutComponent

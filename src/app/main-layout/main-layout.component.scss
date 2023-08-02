@@ -16,7 +16,7 @@
 }
 
 #leftSideBarContainer{
-  background-color: crimson;
+  // background-color: crimson;
   width: 15%;
 }
 
@@ -28,6 +28,8 @@
 }
 
 #rightSideBarContainer{
+  display: flex;
+  flex-direction: row;
   width: 15%;
   // background-color: slateblue;
 }
@@ -44,8 +46,7 @@
   height: 88%;
   width: 25%;
   pointer-events: none;
-  background-color: cadetblue;
-
+  // background-color: cadetblue;
 }
 
 #alertsContainer{

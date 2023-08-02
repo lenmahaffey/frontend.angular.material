@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class RightSideBarComponent {
 
+  animation: string = "hideContainer"
+
+  toggleVisibility()
+  {
+    console.log(this.animation)
+    this.animation =  (this.animation == "showContainer") ? "hideContainer" : "showContainer"
+    console.log(this.animation)
+  }
 }

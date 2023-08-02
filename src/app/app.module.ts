@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { MainLayoutModule } from './main-layout/main-layout.module';
 import { AlertService } from './services/alert/alert.service';
 import { NotificationService } from './services/notification/notification.service';
+import { DemoComponent } from './pages/demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,11 @@ import { NotificationService } from './services/notification/notification.servic
     SharedModule,
     MainLayoutModule,
     RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', component: WelcomeComponent },
+      { path: '', component: DemoComponent },
       { path: '**', component: PageNotFoundComponent }
     ]),
   ],
-  providers: [AlertService, NotificationService ],
+  providers: [AlertService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

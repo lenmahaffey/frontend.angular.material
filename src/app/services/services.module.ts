@@ -4,6 +4,7 @@ import { NotificationManagerComponent } from './notification/notification-manage
 import { AlertComponent } from './alert/alert/alert.component';
 import { AlertManagerComponent } from './alert/alert-manager/alert-manager.component';
 import { NotificationComponent } from './notification/notification/notification.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,7 @@ import { NotificationComponent } from './notification/notification/notification.
     AlertManagerComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ],
   exports:[
     NotificationManagerComponent,
