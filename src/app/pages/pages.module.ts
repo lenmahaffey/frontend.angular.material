@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,8 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DemoComponent,
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    SharedModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: 'demo', component: DemoComponent },

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NotificationManagerComponent } from './notification/notification-manager/notification-manager.component';
 import { AlertComponent } from './alert/alert/alert.component';
 import { AlertManagerComponent } from './alert/alert-manager/alert-manager.component';
@@ -18,7 +17,6 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   imports: [
     SharedModule,
-    BrowserModule
   ],
   exports:[
     NotificationManagerComponent,

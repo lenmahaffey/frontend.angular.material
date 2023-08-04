@@ -20,7 +20,6 @@ import { ServicesModule } from '../services/services.module';
   ],
   imports: [
     ServicesModule,
-    CommonModule,
     RouterModule
   ],
   exports:[
