@@ -20,11 +20,9 @@ import { DemoComponent } from './pages/demo/demo.component';
     AppComponent,
   ],
   imports: [
-    BrowserModule,
     AreasModule,
     PagesModule,
     ServicesModule,
-    SharedModule,
     MainLayoutModule,
     RouterModule.forRoot([
       { path: '', component: DemoComponent },
