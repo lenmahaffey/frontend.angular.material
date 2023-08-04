@@ -17,11 +17,11 @@ export class NotificationComponent {
   {
     switch(this.message.type)
     {
-      case MessageType.Error:
+      case 2:
         return "fa-solid fa-circle-xmark fa-xl app-text-danger me-2"
-      case MessageType.Success:
+      case 0:
         return "fa-solid fa-circle-check fa-xl app-text-success me-2";
-      case MessageType.Warning:
+      case 1:
         return "fa-solid fa-circle-exclamation fa-xl app-text-warning me-2";
       default:
         return "";

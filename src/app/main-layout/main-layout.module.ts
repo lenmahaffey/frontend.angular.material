@@ -6,8 +6,6 @@ import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
 import { RightSideBarComponent } from './right-side-bar/right-side-bar.component';
 import { MainLayoutComponent } from './main-layout.component';
 import { RouterModule } from '@angular/router';
-import { WelcomeComponent } from '../pages/welcome/welcome.component';
-import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 import { ServicesModule } from '../services/services.module';
 
 

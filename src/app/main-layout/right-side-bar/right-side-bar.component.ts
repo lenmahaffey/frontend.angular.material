@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class RightSideBarComponent {
 
-  animation: string = "hideContainer"
+  animation: string = "hidden"
 
   toggleVisibility()
   {

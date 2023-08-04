@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToShortTimeStringPipe } from './pipes/to-short-time-string.pipe';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -9,10 +10,13 @@ import { ToShortTimeStringPipe } from './pipes/to-short-time-string.pipe';
     ToShortTimeStringPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule
   ],
   exports:[
-    ToShortTimeStringPipe
+    ToShortTimeStringPipe,
+    CommonModule,
+    BrowserModule
   ]
 })
 export class SharedModule { }

@@ -16,6 +16,11 @@
   }
 }
 
+.hidden{
+  animation: hide 0s ease-out 0s 1;
+  animation-fill-mode: forwards;
+}
+
 .hideContainer{
   animation: hide .75s ease-out 0s 1;
   animation-fill-mode: forwards;

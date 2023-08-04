@@ -1,1 +1,59 @@
-<p>demo works!</p>
+<div class="h1 text-center">Component demo</div>
+<div class="row border border-2 border-black pb-4 pt-4 mb-4">
+
+    <div class="col-3 mb-3">
+      <div>
+        <button type="button" class="btn btn-primary mb-3" (click)="openConfirmationDialog()">
+            Open Confirmation Demo
+        </button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" (click)="openSpinner()">
+          Open Spinner Demo
+        </button>
+      </div>
+    </div>
+
+    <div class="col">
+      <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification(notificationMessageFormData.value)">
+        <select id="type" class="form-select" name="type" formControlName="type">
+          <option *ngFor="let n of keys" [value]="n">{{ types[n] }}</option>
+        </select>
+        <label for="type" class="form-label">Type</label>
+
+        <input type="text" class="form-control" id="title" formControlName="title" value="{{notificationMessage.text}}">
+        <label for="title" class="form-label">Title</label>
+
+        <input type="text" class="form-control" id="text" formControlName="text" value="{{notificationMessage.title}}"/>
+        <label for="text" class="form-label">Text</label>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">
+            Open Notification Demo
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col d-flex">
+      <div class="row w-100">
+        <form class="h-100" [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert(alertMessageFormData.value)">
+          <select id="type" class="form-select" name="type" formControlName="type">
+            <option *ngFor="let n of keys" [value]="n">{{ types[n] }}</option>
+          </select>
+          <label for="type" class="form-label">Type</label>
+
+          <input type="text" class="form-control" id="text" name="text" formControlName="text" value="{{notificationMessage.text}}">
+          <label for="text" class="form-label">Text</label>
+
+          <div class="form-check form-switch">
+            <input class="form-check-input mt-3" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss" value="{{alertMessage.autoDismiss}}">
+            <label class="form-check-label mt-3" for="dismiss">Autodismiss:</label>
+          </div>
+          <div class="mt-4">
+            <button type="submit" class="btn btn-primary">
+              Open Alert Demo
+            </button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

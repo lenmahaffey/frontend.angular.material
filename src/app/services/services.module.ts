@@ -5,6 +5,7 @@ import { AlertComponent } from './alert/alert/alert.component';
 import { AlertManagerComponent } from './alert/alert-manager/alert-manager.component';
 import { NotificationComponent } from './notification/notification/notification.component';
 import { SharedModule } from '../shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     AlertManagerComponent
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    BrowserModule
   ],
   exports:[
     NotificationManagerComponent,
