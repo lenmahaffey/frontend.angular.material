@@ -18,7 +18,6 @@ export class AlertComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    console.log(this.message)
     if(this.message.autoDismiss)
     {
       this.dismissAlertInTime(1000)
@@ -48,9 +47,7 @@ export class AlertComponent implements OnInit{
   }
 
   async dismissAlertInTime(timeToWait: number ) {
-    console.log("sleeping")
     await this.sleep(timeToWait);
-    console.log("dismissing")
     this.dismissAlert()
 }
 

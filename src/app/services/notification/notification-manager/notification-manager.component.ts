@@ -21,7 +21,6 @@ export class NotificationManagerComponent implements OnDestroy{
 
   deleteMessage(message:Message)
   {
-    console.log("delete")
     let i = this.messages.indexOf(message)
     this.messages.splice(i, 1)
   }

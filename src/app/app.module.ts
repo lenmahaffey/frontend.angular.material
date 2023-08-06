@@ -14,6 +14,7 @@ import { MainLayoutModule } from './main-layout/main-layout.module';
 import { AlertService } from './services/alert/alert.service';
 import { NotificationService } from './services/notification/notification.service';
 import { DemoComponent } from './pages/demo/demo.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DemoComponent } from './pages/demo/demo.component';
       { path: '', component: DemoComponent },
       { path: '**', component: PageNotFoundComponent }
     ]),
+    NgbModule,
   ],
   providers: [AlertService, NotificationService],
   bootstrap: [AppComponent]

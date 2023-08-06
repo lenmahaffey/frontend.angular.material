@@ -13,7 +13,6 @@ export class AlertService {
 
   sendAlert(message: Message)
   {
-    console.log(message)
     this.message.next(message);
   }
 }

@@ -14,14 +14,12 @@ export class AlertManagerComponent {
   constructor(private _service: AlertService){
     this.incoming = this._service.message.subscribe(data =>
       {
-        console.log(data)
         this.messages.push(data)
       })
   }
 
   deleteMessage(message:Message)
   {
-    console.log("delete")
     let i = this.messages.indexOf(message)
     this.messages.splice(i, 1)
   }
