@@ -15,6 +15,7 @@ import { AlertService } from './services/alert/alert.service';
 import { NotificationService } from './services/notification/notification.service';
 import { DemoComponent } from './pages/demo/demo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppStateService } from './services/app-state/app-state-service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ]),
     NgbModule,
   ],
-  providers: [AlertService, NotificationService],
+  providers: [AlertService, NotificationService, AppStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { DemoSideNavLinksComponent } from './demo/demo-side-nav-links/demo-side-nav-links.component';
 
 
 
@@ -14,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     WelcomeComponent,
     PageNotFoundComponent,
     DemoComponent,
+    DemoSideNavLinksComponent,
   ],
   imports: [
     SharedModule,

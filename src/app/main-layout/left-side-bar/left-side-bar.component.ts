@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AppStateService } from 'src/app/services/app-state/app-state-service';
 
 @Component({
   selector: 'app-left-side-bar',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class LeftSideBarComponent {
 
+  sideNavTemplate: any;
+  constructor(private appStateService: AppStateService)
+  {
+    appStateService.leftSideNav.subscribe(data => {
+      this.sideNavTemplate = data
+    })
+  }
+
+  // setSideNav(template: any)
+  // {
+  //   this.sideNavTemplate = template;
+  // }
 }

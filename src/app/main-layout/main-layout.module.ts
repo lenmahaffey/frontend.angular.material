@@ -7,6 +7,7 @@ import { RightSideBarComponent } from './right-side-bar/right-side-bar.component
 import { MainLayoutComponent } from './main-layout.component';
 import { RouterModule } from '@angular/router';
 import { ServicesModule } from '../services/services.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import { ServicesModule } from '../services/services.module';
   ],
   imports: [
     ServicesModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports:[
     MainLayoutComponent

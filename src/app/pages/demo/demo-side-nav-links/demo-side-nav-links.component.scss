@@ -1,0 +1,9 @@
+@use '/src/appTheme.scss' as *;
+.nav-link{
+  color: $appWhite;
+  list-style-type: none;
+}
+
+li{
+  list-style-type: none;
+}

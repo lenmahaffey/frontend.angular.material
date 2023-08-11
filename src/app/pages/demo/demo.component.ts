@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { AppStateService } from 'src/app/services/app-state/app-state-service';
 import { Message } from 'src/app/services/message';
 import { MessageType } from 'src/app/services/message-type.interface';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -14,7 +15,9 @@ import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss']
 })
-export class DemoComponent {
+export class DemoComponent implements OnInit{
+
+  @Input() template: any
   keys: any[] = []
   types = MessageType
   alertMessage: Message = new Message(MessageType.Success)
@@ -22,12 +25,17 @@ export class DemoComponent {
   alertMessageFormData: any
   notificationMessageFormData: any
   confirmationResponseMessage: string = "Please open the confimation dialog and make a selection"
-  constructor(private alertService:AlertService, private notificationService: NotificationService, private modalService: NgbModal)
+  constructor(
+    private alertService:AlertService,
+    private notificationService: NotificationService,
+    private modalService: NgbModal,
+    private appStateService: AppStateService)
   {
     let temp: any[] = Object.values(this.types).filter(f => !isNaN(Number(f)));
     temp.forEach(key =>{
       this.keys.push(parseInt(key))
     })
+
     this.alertMessageFormData = new FormGroup({
       type: new FormControl(this.alertMessage.type),
       title: new FormControl(""),
@@ -40,6 +48,9 @@ export class DemoComponent {
       title: new FormControl("enter notification title"),
       text: new FormControl("enter notification text")
     });
+  }
+  ngOnInit(): void {
+    //this.appStateService.setLeftSideNav(this.template);
   }
 
   sendNotification(formData: any)
@@ -67,8 +78,6 @@ export class DemoComponent {
     let modalOptions: NgbModalOptions = {
       backdrop:"static",
       keyboard:false,
-      // size: 'sm',
-      // centered: true
     }
     let modalRef = this.modalService.open(ConfirmationDialogComponent, modalOptions);
 

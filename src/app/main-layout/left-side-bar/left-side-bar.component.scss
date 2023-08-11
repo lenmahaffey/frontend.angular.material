@@ -13,8 +13,12 @@
   height: 75%;
   display: flex;
   margin: auto;
-  align-items: center;
-  justify-content: center;
   background-color: $appBlack;
   color: $appWhite;
+  font-size: x-large;
+}
+
+.nav-link{
+  color: $appWhite;
+  list-style-type: none;
 }
