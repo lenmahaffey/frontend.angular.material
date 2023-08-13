@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { RightSideBarTextComponent } from './demo/right-side-bar-text/right-side-bar-text.component';
 
 
 
@@ -12,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     WelcomeComponent,
     PageNotFoundComponent,
     DemoComponent,
+    RightSideBarTextComponent,
   ],
   imports: [
     SharedModule,

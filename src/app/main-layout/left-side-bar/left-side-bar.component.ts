@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AppStateService } from 'src/app/services/app-state/app-state-service';
 
 @Component({
@@ -6,15 +7,18 @@ import { AppStateService } from 'src/app/services/app-state/app-state-service';
   templateUrl: './left-side-bar.component.html',
   styleUrls: ['./left-side-bar.component.scss']
 })
-export class LeftSideBarComponent {
+export class LeftSideBarComponent implements OnDestroy{
 
+  appStateSubscription: Subscription
   menuItems: any
 
   constructor(private appStateService: AppStateService)
   {
-    this.appStateService.leftSideNavMenuItems.subscribe(data => {
-      console.log(data)
+    this. appStateSubscription = this.appStateService.leftSideNavMenuItems.subscribe(data => {
       this.menuItems = data
     })
+  }
+  ngOnDestroy(): void {
+    this.appStateSubscription.unsubscribe;
   }
 }

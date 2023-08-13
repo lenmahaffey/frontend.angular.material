@@ -10,19 +10,13 @@ export class AppStateService {
   leftSideNavMenuItems: Subject<MenuItems> = new Subject<MenuItems>();
   rightSideText: Subject<TemplateRef<any>> = new Subject<TemplateRef<any>>()
 
-  private menuItems: MenuItems = {itemGroups: []}
-  private rightSideBarTemplate: any;
-
-  constructor() { }
-
   setLeftSideMenuItems(items: MenuItems)
   {
-    this.menuItems = items
-    this.leftSideNavMenuItems.next(this.menuItems);
+    this.leftSideNavMenuItems.next(items);
   }
 
   setRightSideNav(text: TemplateRef<any>)
   {
-
+    this.rightSideText.next(text)
   }
 }

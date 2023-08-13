@@ -36,25 +36,16 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   // background-color: hotpink;
 }
 
 #rightSideBar{
   height: 85%;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
   // background-color: aqua;
 }
-
 #toggleButton{
+  transform: translateY(100);
 }
-
-#sideBarContainer {
-  height: 100%;
-  transform: translateX(285px);
-  opacity: 1;
-  transition: transform .5s, opacity .5s;
-}
-
-

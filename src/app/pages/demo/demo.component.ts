@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -10,15 +10,15 @@ import { ConfirmationDialogOptions } from 'src/app/shared/confirmation-dialog/co
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 import { MenuItems } from 'src/app/shared/menu-items';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
+import { RightSideBarTextComponent } from './right-side-bar-text/right-side-bar-text.component';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss']
 })
-export class DemoComponent implements OnInit{
+export class DemoComponent implements OnDestroy{
 
-  @Input() template: any
   keys: any[] = []
   types = MessageType
   alertMessage: Message = new Message(MessageType.Success)
@@ -30,7 +30,6 @@ export class DemoComponent implements OnInit{
     itemGroups: [
       {
         id: "1",
-
         title:"Single Link",
         items:[
         { href:"", text:"Single" },
@@ -64,7 +63,9 @@ export class DemoComponent implements OnInit{
     private modalService: NgbModal,
     private appStateService: AppStateService)
   {
+    this.appStateService.setLeftSideMenuItems({itemGroups:[]})
     this.appStateService.setLeftSideMenuItems(this.links);
+
     let temp: any[] = Object.values(this.types).filter(f => !isNaN(Number(f)));
     temp.forEach(key =>{
       this.keys.push(parseInt(key))
@@ -83,8 +84,8 @@ export class DemoComponent implements OnInit{
       text: new FormControl("enter notification text")
     });
   }
-  ngOnInit(): void {
-    //this.appStateService.setLeftSideNav(this.template);
+  ngOnDestroy(): void {
+    this.appStateService.setLeftSideMenuItems({itemGroups:[]})
   }
 
   sendNotification(formData: any)
