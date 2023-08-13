@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -8,6 +8,7 @@ import { MessageType } from 'src/app/services/message-type.interface';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ConfirmationDialogOptions } from 'src/app/shared/confirmation-dialog/confirmation-dialog-options';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
+import { MenuItems } from 'src/app/shared/menu-items';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 
 @Component({
@@ -25,12 +26,45 @@ export class DemoComponent implements OnInit{
   alertMessageFormData: any
   notificationMessageFormData: any
   confirmationResponseMessage: string = "Please open the confimation dialog and make a selection"
+  links: MenuItems = {
+    itemGroups: [
+      {
+        id: "1",
+
+        title:"Single Link",
+        items:[
+        { href:"", text:"Single" },
+      ]},
+      {
+        id: "2",
+        title:"Triple Link",
+        items:[
+        { href:"", text:"First Link" },
+        { href:"", text:"Second Link" },
+        { href:"", text:"Third Link" }
+      ]},
+      {
+        id: "3",
+        title:"Double Link",
+        items:[
+        { href:"", text:"First Link" },
+        { href:"", text:"Second" }
+      ]},
+      {
+        id: "4",
+        title:"Single Link End",
+        items:[
+        { href:"", text:"Single End" }
+      ]},
+    ]
+  }
   constructor(
     private alertService:AlertService,
     private notificationService: NotificationService,
     private modalService: NgbModal,
     private appStateService: AppStateService)
   {
+    this.appStateService.setLeftSideMenuItems(this.links);
     let temp: any[] = Object.values(this.types).filter(f => !isNaN(Number(f)));
     temp.forEach(key =>{
       this.keys.push(parseInt(key))

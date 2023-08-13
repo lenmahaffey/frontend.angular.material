@@ -1,31 +1,28 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
+import { MenuItems } from 'src/app/shared/menu-items';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppStateService {
 
-
-  leftSideNav: Subject<TemplateRef<any>> = new Subject<TemplateRef<any>>()
+  leftSideNavMenuItems: Subject<MenuItems> = new Subject<MenuItems>();
   rightSideText: Subject<TemplateRef<any>> = new Subject<TemplateRef<any>>()
 
-  private leftSideBarNav: any;
-  private rightSideBarText: any;
+  private menuItems: MenuItems = {itemGroups: []}
+  private rightSideBarTemplate: any;
 
   constructor() { }
 
-  setLeftSideNav(nav: TemplateRef<any> | undefined)
+  setLeftSideMenuItems(items: MenuItems)
   {
-    if(nav != undefined){
-      this.leftSideBarNav = nav;
-      this.leftSideNav.next(nav);
-    }
+    this.menuItems = items
+    this.leftSideNavMenuItems.next(this.menuItems);
   }
 
   setRightSideNav(text: TemplateRef<any>)
   {
-    this.rightSideBarText = text;
-    this.rightSideText.next(text);
+
   }
 }

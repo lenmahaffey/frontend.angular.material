@@ -4,7 +4,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { DemoSideNavLinksComponent } from './demo/demo-side-nav-links/demo-side-nav-links.component';
 
 
 
@@ -13,7 +12,6 @@ import { DemoSideNavLinksComponent } from './demo/demo-side-nav-links/demo-side-
     WelcomeComponent,
     PageNotFoundComponent,
     DemoComponent,
-    DemoSideNavLinksComponent,
   ],
   imports: [
     SharedModule,
