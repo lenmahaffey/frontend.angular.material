@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ToShortTimeStringPipe implements PipeTransform {
 
-  transform(value: Date, args:string = "USD") {
+  transform(value: Date) {
     let result = value.toLocaleTimeString().split('').reverse().join('')
     let temp = result.substring(0,3)
     temp += result.substring(6, result.length)

@@ -5,7 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToShortDateStringPipe } from './pipes/to-short-date-string.pipe';
+import { D3Module } from './d3/d3.module';
 
 
 @NgModule({
@@ -13,17 +14,21 @@ import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
     ToShortTimeStringPipe,
     SpinnerComponent,
     ConfirmationDialogComponent,
+    ToShortDateStringPipe,
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    ReactiveFormsModule
   ],
   exports:[
+    ToShortDateStringPipe,
     ToShortTimeStringPipe,
     CommonModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    D3Module
+  ],
+  providers:[
+    ToShortDateStringPipe,
+    ToShortTimeStringPipe
   ]
 })
 export class SharedModule { }

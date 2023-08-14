@@ -1,0 +1,31 @@
+@use '../../../../appTheme.scss' as *;
+
+#demoChart svg{
+  border: 2px solid black;
+}
+
+#demoChart .bar{
+    fill: $appBlue;
+    stroke: black;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+}
+
+#demoChart #xAxis .tick text{
+  text-anchor: end;
+  font-size: 16px;
+}
+
+#demoChart #yAxis .tick text{
+  text-anchor: end;
+  font-size: 16px;
+}
+
+#demoChart .tick line{
+  stroke-opacity: .5;
+}
+
+#demoChart .bar + text {
+  fill: black;
+  font-size: x-large;
+}

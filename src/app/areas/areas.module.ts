@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
-
+import { GraphsModule } from './graphs/graphs.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
-    SharedModule
-  ]
+    GraphsModule,
+  ],
 })
+
 export class AreasModule { }

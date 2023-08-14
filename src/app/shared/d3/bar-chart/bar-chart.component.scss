@@ -1,0 +1,14 @@
+.d3-tooltip{
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  padding: 10px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 4px;
+  color: #fff;
+}
+
+svg + .bar {
+  stroke: red;
+  fill: red;
+}
