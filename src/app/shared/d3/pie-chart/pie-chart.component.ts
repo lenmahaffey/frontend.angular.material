@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as d3 from 'd3';
 import { PieChartData } from './pie-chart-data.interface';
 
@@ -8,9 +8,9 @@ import { PieChartData } from './pie-chart-data.interface';
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent {
-  private _data: PieChartData[] = []
+
   @Input() id = ''
-  @Input() title = 'Pie Chart'
+  @Input() title = ''
   @Input() note = ''
   width = 250
   height = 250
@@ -20,8 +20,7 @@ export class PieChartComponent {
   colors!: any
 
   @Input()
-  get data(): PieChartData[]
-  {
+  get data(): PieChartData[] {
     return this._data
   }
 
@@ -32,21 +31,17 @@ export class PieChartComponent {
     }
   }
 
-  constructor() { }
+  private _data: PieChartData[] = []
 
-  ngOnInit(): void {
+  constructor() {
     this.radius = Math.min(this.width, this.height) / 2 - this.margin;
-  }
 
-  ngAfterViewInit(): void {
-    this.createColors();
-    this.createSvg();
-  }
+   }
 
-  private createSvg(): void {
-    let tempId = "figure#" + this.id
+  private drawChart(): void {
+    let tempId = "svg"
     this.svg = d3.select(tempId)
-      .append("svg")
+      .attr("id", this.id)
       .attr("width", this.width)
       .attr("height", this.height)
       .append("g")
@@ -54,21 +49,16 @@ export class PieChartComponent {
         "transform",
         "translate(" + this.width / 2 + "," + this.height / 2 + ")"
       );
-  }
 
-  private createColors(): void {
     this.colors = d3.scaleOrdinal()
-      .domain(this.data.map(d => d.Name.toString()))
+      .domain(this.data.map(d => d.Name))
       .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
-  }
 
-  private drawChart(): void {
     // Compute the position of each group on the pie:
-    const pie = d3.pie<any>().value((d: any) => Number(d.DataValue));
+    const pie = d3.pie<PieChartData>().value((d: PieChartData) => Number(d.Value));
 
     // Build the pie chart
-    this.svg
-      .selectAll('pieces')
+    this.svg.selectAll('pieces')
       .data(pie(this.data))
       .enter()
       .append('path')
@@ -76,7 +66,7 @@ export class PieChartComponent {
         .innerRadius(0)
         .outerRadius(this.radius)
       )
-      .attr('fill', (d: any, i: any) => (this.colors(i)))
+      .attr('fill', (d: PieChartData, i: any) => (this.colors(i)))
       .attr("stroke", "#121926")
       .style("stroke-width", "1px");
 
@@ -85,14 +75,14 @@ export class PieChartComponent {
       .innerRadius(25)
       .outerRadius(this.radius);
 
-    this.svg
-      .selectAll('pieces')
+    this.svg.selectAll('pieces')
       .data(pie(this.data))
       .enter()
       .append('text')
-      .text((d: { data: PieChartData}) => d.data.Name + d.data.Value)
+      .text((d: { data: PieChartData; }) => d.data.Name + " " + d.data.Value)
       .attr("transform", (d: d3.DefaultArcObject) => "translate(" + labelLocation.centroid(d) + ")")
       .style("text-anchor", "middle")
       .style("font-size", 15);
   }
 }
+
