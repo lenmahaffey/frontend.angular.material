@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeaderNavLinks } from 'src/app/header-nav-links';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  links: HeaderNavLinks = new HeaderNavLinks()
 }

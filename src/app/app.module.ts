@@ -28,6 +28,7 @@ import { AppStateService } from './services/app-state/app-state-service';
     MainLayoutModule,
     RouterModule.forRoot([
       { path: '', component: DemoComponent },
+      { path: 'demo', component: DemoComponent },
       { path: '**', component: PageNotFoundComponent }
     ]),
     NgbModule,

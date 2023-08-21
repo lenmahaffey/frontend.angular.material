@@ -11,6 +11,7 @@ import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/
 import { MenuItems } from 'src/app/shared/menu-items';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 import { RightSideBarTextComponent } from './right-side-bar-text/right-side-bar-text.component';
+import { LeftSideBarNavLinks } from './left-side-bar-nav-links';
 
 @Component({
   selector: 'app-demo',
@@ -26,44 +27,15 @@ export class DemoComponent implements OnDestroy{
   alertMessageFormData: any
   notificationMessageFormData: any
   confirmationResponseMessage: string = "Please open the confimation dialog and make a selection"
-  links: MenuItems = {
-    itemGroups: [
-      {
-        id: "1",
-        title:"Single Link",
-        items:[
-        { href:"", text:"Single" },
-      ]},
-      {
-        id: "2",
-        title:"Triple Link",
-        items:[
-        { href:"", text:"First Link" },
-        { href:"", text:"Second Link" },
-        { href:"", text:"Third Link" }
-      ]},
-      {
-        id: "3",
-        title:"Double Link",
-        items:[
-        { href:"", text:"First Link" },
-        { href:"", text:"Second" }
-      ]},
-      {
-        id: "4",
-        title:"Single Link End",
-        items:[
-        { href:"", text:"Single End" }
-      ]},
-    ]
-  }
+  links: LeftSideBarNavLinks = new LeftSideBarNavLinks()
+
   constructor(
     private alertService:AlertService,
     private notificationService: NotificationService,
     private modalService: NgbModal,
     private appStateService: AppStateService)
   {
-    this.appStateService.setLeftSideMenuItems({itemGroups:[]})
+    this.appStateService.setLeftSideMenuItems(new LeftSideBarNavLinks())
     this.appStateService.setLeftSideMenuItems(this.links);
 
     let temp: any[] = Object.values(this.types).filter(f => !isNaN(Number(f)));
@@ -85,7 +57,7 @@ export class DemoComponent implements OnDestroy{
     });
   }
   ngOnDestroy(): void {
-    this.appStateService.setLeftSideMenuItems({itemGroups:[]})
+    this.appStateService.setLeftSideMenuItems(new LeftSideBarNavLinks())
   }
 
   sendNotification(formData: any)
