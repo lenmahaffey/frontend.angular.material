@@ -16,7 +16,7 @@ import { NotificationService } from './services/notification/notification.servic
 import { DemoComponent } from './pages/demo/demo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppStateService } from './services/app-state/app-state-service';
-import { TooltipService } from './services/tooltip/tooltip.service';
+import { ToolTipService } from './services/tooltip/tooltip.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { TooltipService } from './services/tooltip/tooltip.service';
     ]),
     NgbModule,
   ],
-  providers: [AlertService, NotificationService, TooltipService, AppStateService],
+  providers: [AlertService, NotificationService, ToolTipService, AppStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

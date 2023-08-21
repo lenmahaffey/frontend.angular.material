@@ -1,4 +1,9 @@
 export class ToolTipPosition{
-  x: string = ""
-  y: string = ""
+  constructor(x: number = 0, y: number = 0)
+  {
+    this.x = x
+    this.y = y
+  }
+  x: number = 0
+  y: number = 0
 }

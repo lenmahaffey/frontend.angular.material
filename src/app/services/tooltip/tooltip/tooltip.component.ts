@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ToolTipPosition } from '../tooltip-position';
 
 @Component({
   selector: 'app-tooltip',
@@ -7,6 +8,9 @@ import { Component, Input } from '@angular/core';
 })
 export class TooltipComponent {
   @Input() text: string = ""
-  position: any;
   @Input() isVisible: string = "invisible"
+  @Input() position: ToolTipPosition = new ToolTipPosition();
+
+  get top(): string{ return this.position.y.toString() + "px"}
+  get left(): string{ return this.position.x.toString() + "px"}
 }

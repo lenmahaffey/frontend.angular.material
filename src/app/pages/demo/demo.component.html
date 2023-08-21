@@ -33,6 +33,7 @@
             <button
               type="submit"
               class="btn btn-primary"
+              (mouseover)="setToolTipText('Click here to open a new notification')"
               (mouseenter)="toggleToolTipVisibility($event)"
               (mouseleave)="toggleToolTipVisibility($event)"
               (mousemove)="setToolTipPosition($event)">

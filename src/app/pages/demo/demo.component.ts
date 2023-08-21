@@ -12,7 +12,7 @@ import { MenuItems } from 'src/app/shared/menu-items';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 import { RightSideBarTextComponent } from './right-side-bar-text/right-side-bar-text.component';
 import { LeftSideBarNavLinks } from './left-side-bar-nav-links';
-import { TooltipService } from 'src/app/services/tooltip/tooltip.service';
+import { ToolTipService } from 'src/app/services/tooltip/tooltip.service';
 import { ToolTipPosition } from 'src/app/services/tooltip/tooltip-position';
 
 @Component({
@@ -36,7 +36,7 @@ export class DemoComponent implements OnDestroy{
     private notificationService: NotificationService,
     private modalService: NgbModal,
     private appStateService: AppStateService,
-    private toolTipService: TooltipService)
+    private toolTipService: ToolTipService)
   {
     this.appStateService.setLeftSideMenuItems(new LeftSideBarNavLinks())
     this.appStateService.setLeftSideMenuItems(this.links);
@@ -138,14 +138,16 @@ export class DemoComponent implements OnDestroy{
     this.toolTipService.toggleVisibility()
   }
 
-  setToolTipText(event: Event)
+  setToolTipText(text: string)
   {
-    this.toolTipService.sendText("Demo Tootip")
+    this.toolTipService.sendText(text)
   }
 
-  setToolTipPosition(event: Event)
+  setToolTipPosition(event: MouseEvent)
   {
     let position = new ToolTipPosition()
+    position.x = event.clientX
+    position.y = event.clientY
     this.toolTipService.setPosition(position)
   }
 }

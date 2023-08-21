@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TooltipService } from '../tooltip.service';
+import { ToolTipService } from '../tooltip.service';
+import { ToolTipPosition } from '../tooltip-position';
 
 @Component({
   selector: 'app-tooltip-manager',
@@ -14,8 +15,9 @@ export class TooltipManagerComponent implements OnDestroy {
 
   visibility: string = "invisible"
   toolTipText = ""
+  toolTipPosition = new ToolTipPosition()
 
-  constructor(private toolTipService: TooltipService)
+  constructor(private toolTipService: ToolTipService)
   {
     this.isVisible = toolTipService.isVisible.subscribe(data =>
       {
@@ -26,10 +28,10 @@ export class TooltipManagerComponent implements OnDestroy {
       {
         this.toolTipText = data
       })
-      
+
     this.position = toolTipService.position.subscribe(data =>
       {
-
+        this.toolTipPosition = data
       })
   }
   ngOnDestroy(): void {

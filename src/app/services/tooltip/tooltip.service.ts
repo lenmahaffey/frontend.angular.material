@@ -5,12 +5,12 @@ import { ToolTipPosition } from './tooltip-position';
 @Injectable({
   providedIn: 'root'
 })
-export class TooltipService {
+export class ToolTipService {
 
   text: Subject<any> = new Subject<any>()
   isVisible: Subject<boolean> = new Subject<boolean>()
   clearText: Subject<boolean> = new Subject<boolean>()
-  position: Subject<boolean> = new Subject<boolean>()
+  position: Subject<ToolTipPosition> = new Subject<ToolTipPosition>()
 
   constructor() { }
 
@@ -26,7 +26,7 @@ export class TooltipService {
 
   setPosition(position: ToolTipPosition)
   {
-
+    this.position.next(position)
   }
 
   clearToolTip()
