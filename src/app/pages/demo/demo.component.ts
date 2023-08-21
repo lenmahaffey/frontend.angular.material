@@ -12,6 +12,8 @@ import { MenuItems } from 'src/app/shared/menu-items';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 import { RightSideBarTextComponent } from './right-side-bar-text/right-side-bar-text.component';
 import { LeftSideBarNavLinks } from './left-side-bar-nav-links';
+import { TooltipService } from 'src/app/services/tooltip/tooltip.service';
+import { ToolTipPosition } from 'src/app/services/tooltip/tooltip-position';
 
 @Component({
   selector: 'app-demo',
@@ -33,7 +35,8 @@ export class DemoComponent implements OnDestroy{
     private alertService:AlertService,
     private notificationService: NotificationService,
     private modalService: NgbModal,
-    private appStateService: AppStateService)
+    private appStateService: AppStateService,
+    private toolTipService: TooltipService)
   {
     this.appStateService.setLeftSideMenuItems(new LeftSideBarNavLinks())
     this.appStateService.setLeftSideMenuItems(this.links);
@@ -56,6 +59,7 @@ export class DemoComponent implements OnDestroy{
       text: new FormControl("enter notification text")
     });
   }
+
   ngOnDestroy(): void {
     this.appStateService.setLeftSideMenuItems(new LeftSideBarNavLinks())
   }
@@ -78,7 +82,6 @@ export class DemoComponent implements OnDestroy{
     message.autoDismiss = formData.dismiss
     this.alertService.sendAlert(message);
   }
-
 
   openConfirmationDialog()
   {
@@ -128,5 +131,21 @@ export class DemoComponent implements OnDestroy{
     {
       this.confirmationResponseMessage = this.confirmationResponseMessage = "You clicked no"
     }
+  }
+
+  toggleToolTipVisibility(event: Event)
+  {
+    this.toolTipService.toggleVisibility()
+  }
+
+  setToolTipText(event: Event)
+  {
+    this.toolTipService.sendText("Demo Tootip")
+  }
+
+  setToolTipPosition(event: Event)
+  {
+    let position = new ToolTipPosition()
+    this.toolTipService.setPosition(position)
   }
 }

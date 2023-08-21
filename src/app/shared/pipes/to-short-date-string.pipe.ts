@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ToShortDateStringPipe extends DatePipe implements PipeTransform {
 
-  transfrom(value: any, args?: any): any {
+  transfrom(value: any): any {
     return super.transform(value, "MMM/dd/yyyy")
   }
 

@@ -1,12 +1,12 @@
 <!-- <div id="envBorder" [ngClass]="getEnvironmentBorderName()">
   <div *ngIf="(envName != 'production')" class="text-center borderText ">{{envName}}  </div>
 </div> -->
-
 <div id="flexContainer">
   <div id="headerContainer">
     <app-header></app-header>
   </div>
   <div id="centerContainer">
+    <app-tooltip-manager></app-tooltip-manager>
     <div id="alertsContainer">
       <app-alert-manager></app-alert-manager>
     </div>
@@ -27,4 +27,3 @@
     <app-footer></app-footer>
   </div>
 </div>
-

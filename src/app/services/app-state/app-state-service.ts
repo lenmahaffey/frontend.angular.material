@@ -10,6 +10,7 @@ export class AppStateService {
 
   leftSideNavMenuItems: Subject<MenuItems> = new Subject<MenuItems>();
   rightSideText: Subject<TemplateRef<any>> = new Subject<TemplateRef<any>>()
+  toolTipText: Subject<TemplateRef<any>> = new Subject<TemplateRef<any>>();
 
   setLeftSideMenuItems(items: SideBarNavLinks)
   {
@@ -19,5 +20,10 @@ export class AppStateService {
   setRightSideNav(text: TemplateRef<any>)
   {
     this.rightSideText.next(text)
+  }
+
+  setToolTip(text: TemplateRef<any>)
+  {
+    this.toolTipText.next(text);
   }
 }

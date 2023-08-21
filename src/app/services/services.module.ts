@@ -5,6 +5,8 @@ import { AlertManagerComponent } from './alert/alert-manager/alert-manager.compo
 import { NotificationComponent } from './notification/notification/notification.component';
 import { SharedModule } from '../shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { TooltipComponent } from './tooltip/tooltip/tooltip.component';
+import { TooltipManagerComponent } from './tooltip/tooltip-manager/tooltip-manager.component';
 
 
 
@@ -13,14 +15,17 @@ import { BrowserModule } from '@angular/platform-browser';
     NotificationComponent,
     NotificationManagerComponent,
     AlertComponent,
-    AlertManagerComponent
+    AlertManagerComponent,
+    TooltipComponent,
+    TooltipManagerComponent
   ],
   imports: [
     SharedModule,
   ],
   exports:[
     NotificationManagerComponent,
-    AlertManagerComponent
+    AlertManagerComponent,
+    TooltipManagerComponent
   ]
 })
 export class ServicesModule { }
