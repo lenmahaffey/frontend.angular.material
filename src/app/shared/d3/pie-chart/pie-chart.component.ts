@@ -15,6 +15,7 @@ export class PieChartComponent implements AfterViewInit{
   width = 250
   height = 250
   svg!: any
+  @ViewChild("pie") pie!: ElementRef
 
   @Input() data: PieChartData[] = []
 
@@ -22,6 +23,11 @@ export class PieChartComponent implements AfterViewInit{
   }
 
   ngAfterViewInit(): void {
+
+    this.width = this.pie.nativeElement.offsetWidth
+    this.height = this.pie.nativeElement.offsetHeight
+    console.log(this.width)
+    console.log(this.height)
     this.drawChart();
   }
 
@@ -30,7 +36,7 @@ export class PieChartComponent implements AfterViewInit{
     .domain(this.data.map(d => d.Name))
     .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
 
-    let radius = Math.min(this.width, this.height) / 2;
+    let radius = (Math.max(this.width, this.height) / 2 - 50) / 1.85;
     // let radius = Math.min(this.width, this.height) / 2 - this.margin;
 
     this.svg = d3.select("#" + this.id)
@@ -39,7 +45,7 @@ export class PieChartComponent implements AfterViewInit{
       .append("g")
       .attr(
         "transform",
-        "translate(" + this.width / 2 + "," + this.height / 2 + ")"
+        "translate(" + this.width / 2 + "," + ((this.height / 2) - 20) + ")"
       );
 
     // Compute the position of each group on the pie:
