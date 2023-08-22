@@ -5,6 +5,8 @@ import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { RightSideBarTextComponent } from './demo/right-side-bar-text/right-side-bar-text.component';
+import { ColorSwatchesComponent } from './demo/color-swatches/color-swatches.component';
+import { SwatchComponent } from './demo/color-swatches/swatch/swatch.component';
 
 
 
@@ -14,6 +16,8 @@ import { RightSideBarTextComponent } from './demo/right-side-bar-text/right-side
     PageNotFoundComponent,
     DemoComponent,
     RightSideBarTextComponent,
+    ColorSwatchesComponent,
+    SwatchComponent,
   ],
   imports: [
     SharedModule,

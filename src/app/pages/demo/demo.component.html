@@ -8,7 +8,6 @@
           <button type="button" class="btn btn-primary mb-3" (click)="openConfirmationDialog()">
               Open Confirmation Demo
           </button>
-
         </div>
         <div>
           <button type="button" class="btn btn-primary" (click)="openSpinner()">
@@ -16,7 +15,6 @@
           </button>
         </div>
       </div>
-
       <div class="col">
         <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification(notificationMessageFormData.value)">
           <select id="type" class="form-select" name="type" formControlName="type">
@@ -66,4 +64,5 @@
       </div>
     </div>
   </div>
+  <app-color-swatches></app-color-swatches>
 </div>

@@ -1,133 +1,28 @@
-$appBlack: #353535; //Jet
-$appWhite: #FFFCFF;//#e1e9f1
-$appOrange: #F26430; //Giants Orange
-$appYellow: #DBA507; //Goldenrod
-$appRed:  #F71735;
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$appBlack: #353535;
+$appWhite: #FFFCFF;
+$appOrange: #F26430;
+$appYellow: #FFC107; //Bootstrap Wanring
+$appRed:  #F71735; // Bootstrap Danger
 $appBlue:#1B3B6F;
 $appLightBlue: #3777FF;
 $appDarkBlue: #1B3B6F;
 $appGreen: #0C8346;
-$appGray: #424651; //Platinum
-$appPurple: #5b1144; //Tyrian Purple
+$appGray: #424651;
+$appPurple: #5b1144;
 
-.app-bg-dark {
-    background-color: $appBlack;
-}
+$theme-colors: (
+  "primary":    $blue-600,
+  "secondary":  $appOrange,
+  "gray":       $gray-500,
+  "success":    $appGreen,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $appBlack
+);
 
-.app-bg-gray{
-    background-color: $appGray;
-}
-
-.app-bg-light {
-    background-color: $appWhite;
-}
-
-.app-bg-success {
-    background-color: $appGreen;
-}
-
-.app-bg-warning {
-    background-color: $appYellow;
-}
-
-.app-bg-danger {
-    background-color: $appRed;
-}
-
-.app-bg-primary {
-    background-color: $appBlue;
-}
-
-.app-bg-secondary {
-    background-color: $appOrange;
-}
-
-.app-bg-accent {
-    background-color: $appPurple;
-}
-
-.app-text-dark {
-    color: $appBlack;
-}
-
-.app-text-gray {
-    color: $appGray;
-}
-
-.app-text-light {
-    color: $appWhite;
-}
-
-.app-text-success {
-    color: $appGreen;
-}
-
-.app-text-warning {
-    color: $appYellow;
-}
-
-.app-text-danger {
-    color: $appRed;
-}
-
-.app-text-primary {
-    color: $appBlue;
-}
-
-.app-text-secondary {
-    color: $appOrange;
-}
-
-.app-text-accent {
-    color: $appPurple;
-}
-
-
-.app-border-dark {
-    border-color: $appBlack;
-}
-
-.app-border-gray {
-    border-color: $appGray;
-}
-
-.app-border-light {
-    border-color: $appWhite;
-}
-
-.app-border-success {
-    border-color: $appGreen;
-}
-
-.app-border-warning {
-    border-color: $appYellow;
-}
-
-.app-border-danger {
-    border-color: $appRed;
-}
-
-.app-border-primary {
-    border-color: $appBlue;
-}
-
-.app-border-secondary {
-    border-color: $appOrange;
-}
-
-.app-border-accent {
-    border-color: $appPurple;
-}
-
-.app-alert-success {
-    background-color: rgba($appGreen, .5);
-}
-
-.app-alert-warning {
-    background-color: rgba($appYellow, .3);
-}
-
-.app-alert-error {
-    background-color: rgba($appRed, .3);
-    color: $appBlack;
-}
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
