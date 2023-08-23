@@ -11,6 +11,6 @@ export class TooltipComponent {
   @Input() isVisible: string = "invisible"
   @Input() position: ToolTipPosition = new ToolTipPosition();
 
-  get top(): string{ return this.position.y.toString() + "px"}
-  get left(): string{ return this.position.x.toString() + "px"}
+  get top(): string{ return (this.position.y).toString() + "px"}
+  get left(): string{ return (this.position.x + 15).toString() + "px"}
 }

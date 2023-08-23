@@ -18,11 +18,11 @@ export class NotificationComponent {
     switch(this.message.type)
     {
       case 2:
-        return "fa-solid fa-circle-xmark fa-xl app-text-danger me-2"
+        return "fa-solid fa-circle-xmark fa-xl text-danger me-2"
       case 0:
-        return "fa-solid fa-circle-check fa-xl app-text-success me-2";
+        return "fa-solid fa-circle-check fa-xl text-success me-2";
       case 1:
-        return "fa-solid fa-circle-exclamation fa-xl app-text-warning me-2";
+        return "fa-solid fa-circle-exclamation fa-xl text-warning me-2";
       default:
         return "";
     }

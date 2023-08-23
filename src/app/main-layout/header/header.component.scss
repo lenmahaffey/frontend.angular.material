@@ -6,6 +6,15 @@
   align-items: center;
 }
 
-.whiteText{
-  color: $appWhite;
+.link{
+  color: $light;
 }
+
+.link:hover{
+  color: $gray-500
+}
+
+.link:focus{
+  color: $light;
+}
+

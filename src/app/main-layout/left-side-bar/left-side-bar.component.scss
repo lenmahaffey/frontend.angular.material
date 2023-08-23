@@ -13,12 +13,34 @@
   height: 75%;
   display: flex;
   margin: auto;
-  background-color: $appBlack;
-  color: $appWhite;
-  font-size: x-large;
 }
 
-.nav-link{
-  color: $appWhite;
+li{
   list-style-type: none;
+}
+
+.link{
+  font-size: x-large;
+  color: $light;
+}
+
+.subLink{
+  font-size: large;
+  color: $light;
+}
+
+.link:hover{
+  color: $gray-500
+}
+
+.subLink:hover{
+  color: $gray-500
+}
+
+.link:focus{
+  color: $light;
+}
+
+.subLink:focus{
+  color: $light;
 }

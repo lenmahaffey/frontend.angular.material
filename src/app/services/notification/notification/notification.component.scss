@@ -40,15 +40,15 @@
   animation-fill-mode: forwards;
 }
 
-
 #container{
-  // background-color: blueviolet;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   margin: 1%;
   margin-right: 2%;
+  // background-color: blueviolet;
 }
+
 .errorBorder {
   border-color: $appRed;
 }
