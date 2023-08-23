@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -8,9 +8,7 @@ import { MessageType } from 'src/app/services/message-type.interface';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ConfirmationDialogOptions } from 'src/app/shared/confirmation-dialog/confirmation-dialog-options';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
-import { MenuItems } from 'src/app/shared/menu-items';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
-import { RightSideBarTextComponent } from './right-side-bar-text/right-side-bar-text.component';
 import { LeftSideBarNavLinks } from './left-side-bar-nav-links';
 import { ToolTipService } from 'src/app/services/tooltip/tooltip.service';
 import { ToolTipPosition } from 'src/app/services/tooltip/tooltip-position';
@@ -24,8 +22,6 @@ export class DemoComponent implements OnDestroy{
 
   keys: any[] = []
   types = MessageType
-  alertMessage: Message = new Message(MessageType.Success)
-  notificationMessage: Message = new Message(MessageType.Success)
   alertMessageFormData: any
   notificationMessageFormData: any
   confirmationResponseMessage: string = "Please open the confimation dialog and make a selection"
@@ -47,15 +43,15 @@ export class DemoComponent implements OnDestroy{
     })
 
     this.alertMessageFormData = new FormGroup({
-      type: new FormControl(this.alertMessage.type),
+      type: new FormControl(0),
       title: new FormControl(""),
       text: new FormControl("Enter alert text"),
-      dismiss: new FormControl(this.alertMessage.autoDismiss),
+      dismiss: new FormControl(false),
       duration: new FormControl({value: 1, disabled: true})
     });
 
     this.notificationMessageFormData = new FormGroup({
-      type: new FormControl(this.alertMessage.type),
+      type: new FormControl(0),
       title: new FormControl("Enter notification title"),
       text: new FormControl("Enter notification text"),
     });
@@ -155,6 +151,8 @@ export class DemoComponent implements OnDestroy{
   }
   toggleDuration()
   {
-    this.alertMessageFormData.controls['dismiss'].value ? this.alertMessageFormData.controls['duration'].enable() : this.alertMessageFormData.controls['duration'].disable()
+    this.alertMessageFormData.controls['dismiss'].value ?
+      this.alertMessageFormData.controls['duration'].enable() :
+      this.alertMessageFormData.controls['duration'].disable()
   }
 }
