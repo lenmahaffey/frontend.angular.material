@@ -12,23 +12,27 @@ export class PieChartComponent implements AfterViewInit{
   @Input() id = ''
   @Input() title = ''
   @Input() note = ''
+  @Input() data: PieChartData[] = []
+  @ViewChild("pie") pie!: ElementRef
   width = 250
   height = 250
   svg!: any
-  @ViewChild("pie") pie!: ElementRef
 
-  @Input() data: PieChartData[] = []
-
-  constructor() {
-  }
+  constructor() {}
 
   ngAfterViewInit(): void {
-
     this.width = this.pie.nativeElement.offsetWidth
     this.height = this.pie.nativeElement.offsetHeight
-    console.log(this.width)
-    console.log(this.height)
-    this.drawChart();
+    this.drawSvg();
+  }
+
+  drawSvg(){
+    this.deleteSvg()
+    this.drawChart()
+  }
+
+  private deleteSvg(): void{
+    d3.select("#" + this.id).html("")
   }
 
   private drawChart(): void {
@@ -36,8 +40,7 @@ export class PieChartComponent implements AfterViewInit{
     .domain(this.data.map(d => d.Name))
     .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
 
-    let radius = (Math.max(this.width, this.height) / 2 - 50) / 1.85;
-    // let radius = Math.min(this.width, this.height) / 2 - this.margin;
+    let radius = (Math.min(this.width, this.height)) * .45;
 
     this.svg = d3.select("#" + this.id)
       .attr("width", this.width)
@@ -45,7 +48,7 @@ export class PieChartComponent implements AfterViewInit{
       .append("g")
       .attr(
         "transform",
-        "translate(" + this.width / 2 + "," + ((this.height / 2) - 20) + ")"
+        "translate(" + this.width / 2 + "," + ((this.height / 2) - 25) + ")"
       );
 
     // Compute the position of each group on the pie:

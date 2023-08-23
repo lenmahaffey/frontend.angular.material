@@ -12,7 +12,20 @@ export class BarChartDemoComponent {
     {
       Name: "First",
       Value: 75,
-      Date: new Date(),
-      DateUpdated: new Date()}
+    },
+    {
+      Name: "Second",
+      Value: 100,
+    }
+  ]
+  data1: BarChartData[] = [
+    {
+      Name: "Third",
+      Value: 250,
+    },
+    {
+      Name: "Fourth",
+      Value: 18,
+    }
   ]
 }

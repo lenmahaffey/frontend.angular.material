@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, } from '@angular/core';
 import { BarChartData } from './bar-chart-data.interface';
-import { ToShortDateStringPipe } from '../../pipes/to-short-date-string.pipe';
 import * as d3 from 'd3';
 
 @Component({
@@ -8,33 +7,33 @@ import * as d3 from 'd3';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent {
-  
-  @Output() monthClicked = new EventEmitter<String>();
+export class BarChartComponent implements AfterViewInit{
 
-  @Input() public title: string = "Bar chart"
-  private _data: BarChartData[] = []
-  private margin = 50;
-  private width = 1200;
-  private height = 450;
+  @ViewChild("bar") bar!: ElementRef
+  @Input() title: string = "Bar chart"
+  @Input() data: BarChartData[] = []
+  @Input() id = ''
+  @Input() note = ''
+  private width = 0;
+  private height = 0;
   private barheight = 0;
-  public valueName = "";
-  public count = "";
-  public lastUpdated = "";
+  constructor() { }
 
-  @Input()
-  get data(): BarChartData[] {
-    return this._data
+  ngAfterViewInit(): void {
+    this.width = this.bar.nativeElement.offsetWidth
+    this.height = this.bar.nativeElement.offsetHeight
+    this.drawSvg()
   }
 
-  set data(value: BarChartData[]) {
-    this._data = value
-    if (value[0] != null || value[0] != undefined) {
-      this.drawSvg()
-    }
+  private drawSvg(): void {
+    this.deleteSvg()
+    this.calculateBarHeight()
+    this.drawChart();
   }
 
-  constructor(private shortDatePipe: ToShortDateStringPipe) { }
+  private deleteSvg(): void{
+    d3.select("#" + this.id).html("")
+  }
 
   private calculateBarHeight()
   {
@@ -49,38 +48,32 @@ export class BarChartComponent {
     this.barheight = Math.ceil(max / 100)* 100
   }
 
-  private deleteSvg(): void{
-    d3.select("svg").html("")
-  }
-
-  private drawSvg(): void {
-    this.deleteSvg();
-    this.calculateBarHeight()
-    this.drawChart();
-  }
-
   private drawChart(): void {
-    const svg = d3.select("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height  + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + (this.margin) + "," + (this.margin - 20) + ")");
+    console.log(d3.selectAll("#" + this.id))
+    const svg = d3.select("#" + this.id)
+    .attr("width", this.width - 50)
+    .attr("height", this.height - 50)
+    .append("g")
+    .attr(
+      "transform",
+      "translate(" + 50 + "," + 50 + ")"
+    );
 
     // Create the X-axis band scale
     const x = d3.scaleBand()
-      .range([0, this.width])
+      .range([0, this.width - 50])
       .domain(this.data.map(d => d.Name))
       .padding(.3);
 
     // Create the Y-axis band scale
     const y = d3.scaleLinear()
       .domain([0, this.barheight])
-      .range([this.height, 0]);
+      .range([this.height - 165, 0]);
 
     // Draw the X-axis on the DOM
     const xAxisG = svg.append("g")
       .attr("id", "xAxis")
-      .attr("transform", "translate(0," + (this.height) + ")")
+      .attr("transform", "translate(0," + (this.height - 165) + ")")
       .call(d3.axisBottom(x))
 
     xAxisG.selectAll(".domain")
@@ -113,15 +106,11 @@ export class BarChartComponent {
       .attr("x", (d: BarChartData) => x(d.Name) ?? "")
       .attr("y", (d: BarChartData) => y(0) ?? "")
       .attr("width", x.bandwidth())
-      .attr("height", this.height - y(0))
+      .attr("height", this.height)
 
     bars.append("text")
       .text((d: BarChartData) => {
-        if(d.Date <= new Date())
-        {
           return d.Value;
-        }
-        else return ""
       })
       .attr("x", function(d,i){
         let position = x(d.Name)
@@ -135,47 +124,14 @@ export class BarChartComponent {
       .attr("y", function(d){
           return y(d.Value) - 5;
       })
-      .attr("opacity", 0);
+
 
       svg.selectAll("rect")
-      .transition()
-      .duration(800)
       .attr("y", (d: any) => y( d.Value ) )
-      .attr("height", (d: any) => this.height -  y(d.Value))
-      .on("end", () => {
-        svg.selectAll(".bar + text")
-        .transition()
-        .duration(500)
-        .style("opacity", 1)
-      })
-
-    bars.on("mouseenter", (e: MouseEvent) =>{
-      let id = ((e.target as HTMLElement).childNodes[0] as HTMLElement).id
-      let tip = document.querySelector(".d3-tooltip") as HTMLElement
-      let d = this.data.find(x => x.Name == id)
-      this.count = d?.Value.toString() ?? ""
-      this.lastUpdated = this.shortDatePipe.transform(d?.DateUpdated) ?? ""
-      tip.style.visibility = "visible"
-    })
-
-    bars.on("mousemove", (e: MouseEvent) =>{
-      let tip = document.querySelector(".d3-tooltip") as HTMLElement
-      tip.style.left = (e.offsetX + 50).toString() + 'px'
-      tip.style.top = (e.pageY - 150).toString() + 'px'
-    })
-
-    bars.on("mouseleave", (e: MouseEvent) =>{
-      let tip = document.querySelector(".d3-tooltip") as HTMLElement
-      tip.style.visibility = "hidden"
-    })
-
-    bars.on("click", (e: MouseEvent) => {
-      let name = (e.target as Element).id
-      this.monthClicked.emit(name)
-    })
+      .attr("height", (d: any) => (this.height - 165) -  y(d.Value))
 
     var lines:any = []
-    document.querySelectorAll(".tick").forEach((line: Element) =>
+    document.querySelectorAll("#" + this.id + " .tick").forEach((line: Element) =>
     {
        if(line.children[0].getAttribute("x2") != null)
        {
@@ -192,5 +148,21 @@ export class BarChartComponent {
         newLine.setAttribute("stroke-opacity", "0.5");
         line.append(newLine)
       })
+
+    bars.on("mouseenter", (e: MouseEvent) =>{
+
+    })
+
+    bars.on("mousemove", (e: MouseEvent) =>{
+
+    })
+
+    bars.on("mouseleave", (e: MouseEvent) =>{
+
+    })
+
+    bars.on("click", (e: MouseEvent) => {
+
+    })
   }
 }
