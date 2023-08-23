@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Message } from '../../message';
 import { MessageType } from '../../message-type.interface';
 
@@ -7,22 +7,21 @@ import { MessageType } from '../../message-type.interface';
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent implements OnInit{
+export class AlertComponent implements AfterViewInit{
 
   @Input() message: Message = new Message(MessageType.Success)
   @Output() dismissed: EventEmitter<Message> = new EventEmitter<Message>();
   animation: string = "showAlert"
 
-  constructor()
-  {
-
-  }
-  ngOnInit(): void {
+  constructor(){}
+  ngAfterViewInit(): void {
     if(this.message.autoDismiss)
     {
-      this.dismissAlertInTime(1000)
+      console.log(this.message)
+      this.dismissAlertInTime(this.message.duration * 1000)
     }
   }
+
   getBackgroundClass()
   {
     switch(this.message.type)

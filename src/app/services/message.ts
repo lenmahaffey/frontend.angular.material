@@ -6,6 +6,7 @@ export class Message {
   type: MessageType
   time: Date
   autoDismiss: boolean
+  duration: number
 
   constructor(type?: MessageType) {
     this.type = type ?? MessageType.Error
@@ -13,6 +14,7 @@ export class Message {
     this.time = new Date()
     this.title = ""
     this.text = ""
+    this.duration = 1
   }
 }
 

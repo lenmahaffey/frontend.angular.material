@@ -16,16 +16,16 @@
         </div>
       </div>
       <div class="col">
-        <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification(notificationMessageFormData.value)">
+        <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
           <select id="type" class="form-select" name="type" formControlName="type">
             <option *ngFor="let n of keys" [value]="n">{{ types[n] }}</option>
           </select>
           <label for="type" class="form-label">Type</label>
 
-          <input type="text" class="form-control" id="title" formControlName="title" value="{{notificationMessage.text}}">
+          <input type="text" class="form-control" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
           <label for="title" class="form-label">Title</label>
 
-          <input type="text" class="form-control" id="text" formControlName="text" value="{{notificationMessage.title}}"/>
+          <input type="text" class="form-control" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
           <label for="text" class="form-label">Text</label>
           <div class="text-center">
             <button
@@ -42,18 +42,23 @@
       </div>
       <div class="col">
         <div class="row">
-          <form class="align-self-start" [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert(alertMessageFormData.value)">
+          <form class="align-self-start" [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
             <select id="type" class="form-select" name="type" formControlName="type">
               <option *ngFor="let n of keys" [value]="n">{{ types[n] }}</option>
             </select>
             <label for="type" class="form-label">Type</label>
 
-            <input type="text" class="form-control" id="text" name="text" formControlName="text" value="{{notificationMessage.text}}">
+            <input type="text" class="form-control" id="text" name="text" formControlName="text" value="{{alertMessageFormData.text}}">
             <label for="text" class="form-label">Text</label>
-
-            <div class="form-check form-switch mb-4">
-              <input class="form-check-input mt-3" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss" value="{{alertMessage.autoDismiss}}">
-              <label class="form-check-label mt-3" for="dismiss">Autodismiss:</label>
+            <div class="row mb-2 ms-1">
+              <div class="form-check form-switch mt-2 col-4">
+                <input class="form-check-input" (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss" value="{{alertMessageFormData.autoDismiss}}">
+                <label class="form-check-label" for="dismiss">Autodismiss:</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="duration" name="duration" formControlName="duration" value="{{alertMessageFormData.duration}}">
+                <label class="form-check-label" for="dismiss">Display Time (in seconds)</label>
+              </div>
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary mt-1">

@@ -50,13 +50,14 @@ export class DemoComponent implements OnDestroy{
       type: new FormControl(this.alertMessage.type),
       title: new FormControl(""),
       text: new FormControl("Enter alert text"),
-      dismiss: new FormControl(this.alertMessage.autoDismiss)
+      dismiss: new FormControl(this.alertMessage.autoDismiss),
+      duration: new FormControl({value: 1, disabled: true})
     });
 
     this.notificationMessageFormData = new FormGroup({
       type: new FormControl(this.alertMessage.type),
-      title: new FormControl("enter notification title"),
-      text: new FormControl("enter notification text")
+      title: new FormControl("Enter notification title"),
+      text: new FormControl("Enter notification text"),
     });
   }
 
@@ -64,22 +65,24 @@ export class DemoComponent implements OnDestroy{
     this.appStateService.setLeftSideMenuItems(new LeftSideBarNavLinks())
   }
 
-  sendNotification(formData: any)
+  sendNotification()
   {
     var message = new Message()
-    message.type = parseInt(formData.type)
-    message.title = formData.title
-    message.text = formData.text
+    message.type = this.notificationMessageFormData.value.type
+    message.title = this.notificationMessageFormData.value.title
+    message.text = this.notificationMessageFormData.value.text
     this.notificationService.sendNotification(message);
   }
 
-  sendAlert(formData: any)
+  sendAlert()
   {
+    console.log(this.alertMessageFormData)
     var message = new Message()
-    message.type = parseInt(formData.type)
-    message.title = ""
-    message.text = formData.text
-    message.autoDismiss = formData.dismiss
+    message.type = parseInt(this.alertMessageFormData.value.type)
+    message.title = "" //Unused with alerts
+    message.text = this.alertMessageFormData.value.text
+    message.autoDismiss = this.alertMessageFormData.value.dismiss
+    message.duration = this.alertMessageFormData.value.duration
     this.alertService.sendAlert(message);
   }
 
@@ -149,5 +152,9 @@ export class DemoComponent implements OnDestroy{
     position.x = event.clientX
     position.y = event.clientY
     this.toolTipService.setPosition(position)
+  }
+  toggleDuration()
+  {
+    this.alertMessageFormData.controls['dismiss'].value ? this.alertMessageFormData.controls['duration'].enable() : this.alertMessageFormData.controls['duration'].disable()
   }
 }
