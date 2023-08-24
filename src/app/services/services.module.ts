@@ -3,21 +3,25 @@ import { NotificationManagerComponent } from './notification/notification-manage
 import { AlertComponent } from './alert/alert/alert.component';
 import { AlertManagerComponent } from './alert/alert-manager/alert-manager.component';
 import { NotificationComponent } from './notification/notification/notification.component';
-import { SharedModule } from '../shared/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { TooltipComponent } from './tooltip/tooltip/tooltip.component';
 import { TooltipManagerComponent } from './tooltip/tooltip-manager/tooltip-manager.component';
-
-
+import { SharedModule } from '../shared/shared.module';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
+  providers:[
+    MatDialog,
+  ],
   declarations: [
     NotificationComponent,
     NotificationManagerComponent,
     AlertComponent,
     AlertManagerComponent,
     TooltipComponent,
-    TooltipManagerComponent
+    TooltipManagerComponent,
+    SpinnerComponent,
   ],
   imports: [
     SharedModule,
@@ -25,7 +29,7 @@ import { TooltipManagerComponent } from './tooltip/tooltip-manager/tooltip-manag
   exports:[
     NotificationManagerComponent,
     AlertManagerComponent,
-    TooltipManagerComponent
+    TooltipManagerComponent,
   ]
 })
 export class ServicesModule { }

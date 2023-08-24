@@ -1,4 +1,4 @@
-@use '../../../../appTheme.scss' as *;
+// @use '../../../../appTheme.scss' as *;
 
 @keyframes hide{
   to{
@@ -50,13 +50,13 @@
 }
 
 .errorBorder {
-  border-color: $appRed;
+  // border-color: $appRed;
 }
 
 .successBorder {
-  border-color: $appGreen;
+  // border-color: $appGreen;
 }
 
 .warningBorder {
-  border-color: $appYellow;
+  // border-color: $appYellow;
 }

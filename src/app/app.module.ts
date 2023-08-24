@@ -14,7 +14,6 @@ import { MainLayoutModule } from './main-layout/main-layout.module';
 import { AlertService } from './services/alert/alert.service';
 import { NotificationService } from './services/notification/notification.service';
 import { DemoComponent } from './pages/demo/demo.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppStateService } from './services/app-state/app-state-service';
 import { ToolTipService } from './services/tooltip/tooltip.service';
 
@@ -32,7 +31,6 @@ import { ToolTipService } from './services/tooltip/tooltip.service';
       { path: 'demo', component: DemoComponent },
       { path: '**', component: PageNotFoundComponent }
     ]),
-    NgbModule,
   ],
   providers: [AlertService, NotificationService, ToolTipService, AppStateService],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-@use '/src/appTheme.scss' as *;
+
 #container{
   width: 100%;
   height: 100%;
@@ -21,26 +21,26 @@ li{
 
 .link{
   font-size: x-large;
-  color: $light;
+  // color: $light;
 }
 
 .subLink{
   font-size: large;
-  color: $light;
+  // color: $light;
 }
 
 .link:hover{
-  color: $gray-500
+  // color: $gray-500
 }
 
 .subLink:hover{
-  color: $gray-500
+  // color: $gray-500
 }
 
 .link:focus{
-  color: $light;
+  // color: $light;
 }
 
 .subLink:focus{
-  color: $light;
+  // color: $light;
 }

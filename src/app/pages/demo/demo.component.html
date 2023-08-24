@@ -5,12 +5,12 @@
       <div class="col-3 mb-3">
         <div>
           <div>{{ confirmationResponseMessage }}</div>
-          <button type="button" class="btn btn-primary mb-3" (click)="openConfirmationDialog()">
+          <button mat-raised-button color="primary" (click)="openConfirmationDialog()">
               Open Confirmation Demo
           </button>
         </div>
         <div>
-          <button type="button" class="btn btn-primary" (click)="openSpinner()">
+          <button mat-raised-button color="primary" (click)="openSpinner()">
             Open Spinner Demo
           </button>
         </div>
@@ -29,8 +29,9 @@
           <label for="text" class="form-label">Text</label>
           <div class="text-center">
             <button
+              mat-raised-button
+              color="primary"
               type="submit"
-              class="btn btn-primary"
               (mouseover)="setToolTipText('Click here to open a new notification')"
               (mouseenter)="toggleToolTipVisibility($event)"
               (mouseleave)="toggleToolTipVisibility($event)"
@@ -61,7 +62,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary mt-1">
+              <button mat-raised-button color="primary" type="submit">
                 Open Alert Demo
               </button>
             </div>

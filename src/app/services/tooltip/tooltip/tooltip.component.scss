@@ -1,4 +1,4 @@
-@use '../../../../appTheme.scss' as *;
+// @use '../../../../appTheme.scss' as *;
 
 .tip{
   position: absolute;
@@ -9,6 +9,6 @@
   background: rgba(0,0,0,0.6);
   border-radius: 4px;
   color: #fff;
-  background-color: $appBlack;
+  // background-color: $appBlack;
   overflow: hidden;
 }

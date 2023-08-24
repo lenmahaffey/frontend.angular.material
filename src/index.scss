@@ -1,15 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-@use '/src/appTheme.scss' as *;
-
+@use '@angular/material' as mat;
+@use "./appTheme.scss" as *;
+@import "@angular/material/theming";
+@include mat.core();
+@include mat.all-component-themes($app-theme);
 html, body {
   height: 100%;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  background-color: $light;
+  // background-color: $light;
   overflow: hidden;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  background: white;
+  background: $white
 }
 
 /* Handle */
@@ -19,5 +22,5 @@ html, body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: black;
+  background: $black;
 }

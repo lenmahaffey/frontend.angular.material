@@ -3,16 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ToShortTimeStringPipe } from './pipes/to-short-time-string.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ToShortDateStringPipe } from './pipes/to-short-date-string.pipe';
 import { D3Module } from './d3/d3.module';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
   declarations: [
     ToShortTimeStringPipe,
-    SpinnerComponent,
     ConfirmationDialogComponent,
     ToShortDateStringPipe,
   ],
@@ -24,7 +23,8 @@ import { D3Module } from './d3/d3.module';
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
-    D3Module
+    D3Module,
+    MaterialModule,
   ],
   providers:[
     ToShortDateStringPipe,

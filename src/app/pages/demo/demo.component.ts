@@ -8,10 +8,11 @@ import { MessageType } from 'src/app/services/message-type.interface';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ConfirmationDialogOptions } from 'src/app/shared/confirmation-dialog/confirmation-dialog-options';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
-import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 import { LeftSideBarNavLinks } from './left-side-bar-nav-links';
 import { ToolTipService } from 'src/app/services/tooltip/tooltip.service';
 import { ToolTipPosition } from 'src/app/services/tooltip/tooltip-position';
+import { SpinnerComponent } from 'src/app/services/spinner/spinner.component';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-demo',
@@ -106,14 +107,12 @@ export class DemoComponent implements OnDestroy{
 
   openSpinner()
   {
-    let options: NgbModalOptions = {
-      // backdrop:"static",
-      // keyboard:false,
-      size: 'sm',
-      centered: true
+    var config = new MatDialogConfig()
+    config.data =
+    {
+      message: "Fetching Data",
     }
-    const modalRef = this.modalService.open(SpinnerComponent, options);
-    modalRef.componentInstance.message= "Spin me round";
+    this.appStateService.openSpinner(config);
   }
 
   setConfirmationResponseMessage(data: boolean | null)
