@@ -56,7 +56,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatSlideToggleModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }

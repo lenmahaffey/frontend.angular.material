@@ -1,8 +1,7 @@
-<app-right-side-bar-text></app-right-side-bar-text>
-<div class="container">
-  <div class="h1 text-center">Component demo</div>
-    <div class="row border border-2 border-start-0 border-end-0 border-black pb-4 pt-4 mb-4">
-      <div class="col-3 mb-3">
+<div class="">
+  <div class="">Component demo</div>
+    <div class="">
+      <div class="">
         <div>
           <div>{{ confirmationResponseMessage }}</div>
           <button mat-raised-button color="primary" (click)="openConfirmationDialog()">
@@ -15,7 +14,7 @@
           </button>
         </div>
       </div>
-      <div class="col">
+      <div class="">
         <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
           <mat-form-field>
             <mat-label>Type</mat-label>
@@ -34,7 +33,7 @@
             <input matInput type="text" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
           </mat-form-field>
 
-          <div class="text-center">
+          <div class="">
             <button
               mat-raised-button
               color="primary"
@@ -48,9 +47,9 @@
           </div>
         </form>
       </div>
-      <div class="col">
-        <div class="row">
-          <form class="align-self-start" [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
+      <div class="">
+        <div class="">
+          <form class="" [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
             <mat-form-field>
               <mat-label>Type</mat-label>
               <mat-select id="type" name="type" formControlName="type">
@@ -64,17 +63,17 @@
             </mat-form-field>
 
 
-            <div class="row mb-2 ms-1">
+            <div class="">
               <mat-slide-toggle (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss">Autodismiss:</mat-slide-toggle>
 
-              <div class="col">
+              <div class="">
                 <mat-form-field>
                   <mat-label>Display Time (in seconds)</mat-label>
                   <input matInput type="text" id="text" formControlName="duration" value="{{ alertMessageFormData.duration }}"/>
                 </mat-form-field>
               </div>
             </div>
-            <div class="text-center">
+            <div class="">
               <button mat-raised-button color="primary" type="submit">
                 Open Alert Demo
               </button>
