@@ -7,7 +7,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { ToShortDateStringPipe } from './pipes/to-short-date-string.pipe';
 import { D3Module } from './d3/d3.module';
 import { MaterialModule } from './material/material.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { MaterialModule } from './material/material.module';
     ReactiveFormsModule,
     D3Module,
     MaterialModule,
+    BrowserAnimationsModule
   ],
   providers:[
     ToShortDateStringPipe,

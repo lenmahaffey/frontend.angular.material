@@ -6,9 +6,8 @@ import { NotificationComponent } from './notification/notification/notification.
 import { TooltipComponent } from './tooltip/tooltip/tooltip.component';
 import { TooltipManagerComponent } from './tooltip/tooltip-manager/tooltip-manager.component';
 import { SharedModule } from '../shared/shared.module';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
   providers:[

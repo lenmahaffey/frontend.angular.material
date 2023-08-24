@@ -148,6 +148,8 @@ export class DemoComponent implements OnDestroy{
     position.y = event.clientY
     this.toolTipService.setPosition(position)
   }
+
+
   toggleDuration()
   {
     this.alertMessageFormData.controls['dismiss'].value ?

@@ -38,6 +38,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { SpinnerComponent } from 'src/app/services/spinner/spinner.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -50,6 +51,10 @@ import { SpinnerComponent } from 'src/app/services/spinner/spinner.component';
     MatButtonModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule { }

@@ -17,16 +17,23 @@
       </div>
       <div class="col">
         <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
-          <select id="type" class="form-select" name="type" formControlName="type">
-            <option *ngFor="let n of keys" [value]="n">{{ types[n] }}</option>
-          </select>
-          <label for="type" class="form-label">Type</label>
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select id="type" name="type" formControlName="type">
+              <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-          <input type="text" class="form-control" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
-          <label for="title" class="form-label">Title</label>
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput type="text" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
+          </mat-form-field>
 
-          <input type="text" class="form-control" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
-          <label for="text" class="form-label">Text</label>
+          <mat-form-field>
+            <mat-label>Text</mat-label>
+            <input matInput type="text" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
+          </mat-form-field>
+
           <div class="text-center">
             <button
               mat-raised-button
@@ -44,21 +51,27 @@
       <div class="col">
         <div class="row">
           <form class="align-self-start" [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
-            <select id="type" class="form-select" name="type" formControlName="type">
-              <option *ngFor="let n of keys" [value]="n">{{ types[n] }}</option>
-            </select>
-            <label for="type" class="form-label">Type</label>
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select id="type" name="type" formControlName="type">
+                <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-            <input type="text" class="form-control" id="text" name="text" formControlName="text" value="{{alertMessageFormData.text}}">
-            <label for="text" class="form-label">Text</label>
+            <mat-form-field>
+              <mat-label>Text</mat-label>
+              <input matInput type="text" id="text" formControlName="text" value="{{alertMessageFormData.text}}"/>
+            </mat-form-field>
+
+
             <div class="row mb-2 ms-1">
-              <div class="form-check form-switch mt-2 col-4">
-                <input class="form-check-input" (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss" value="{{alertMessageFormData.autoDismiss}}">
-                <label class="form-check-label" for="dismiss">Autodismiss:</label>
-              </div>
+              <mat-slide-toggle (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss">Autodismiss:</mat-slide-toggle>
+
               <div class="col">
-                <input type="text" class="form-control" id="duration" name="duration" formControlName="duration" value="{{alertMessageFormData.duration}}">
-                <label class="form-check-label" for="dismiss">Display Time (in seconds)</label>
+                <mat-form-field>
+                  <mat-label>Display Time (in seconds)</mat-label>
+                  <input matInput type="text" id="text" formControlName="duration" value="{{ alertMessageFormData.duration }}"/>
+                </mat-form-field>
               </div>
             </div>
             <div class="text-center">
