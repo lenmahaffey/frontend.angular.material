@@ -1,38 +1,21 @@
-<nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-      <ng-container
-        *ngFor="let item of links.links.itemGroups"
-        [ngTemplateOutlet]="item.items.length == 1 ? singleLink : dropDown"
-        [ngTemplateOutletContext]="{ $implicit: true ? item : item }">
-      </ng-container>
-      </ul>
-    </div>
-  </div>
-</nav>
+<mat-toolbar color="primary">
+  <button mat-button>My Application</button>
+  <ng-container
+    *ngFor="let item of links.links.itemGroups"
+    [ngTemplateOutlet]="item.items.length == 1 ? singleLink : dropDown"
+    [ngTemplateOutletContext]="{ $implicit: true ? item : item }">
+  </ng-container>
+</mat-toolbar>
 
 <ng-template #singleLink let-item>
-  <li class="nav-item">
-    <a class="nav-link link" href="{{item.href}}">{{ item.items[0].text }}</a>
-  </li>
+  <button mat-button>{{ item.items[0].text }}</button>
 </ng-template>
 
 <ng-template #dropDown let-item>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      {{ item.title }}
-    </a>
-    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-      <div *ngFor="let item of item.items">
-        <li><a class="nav-link link" href="{{item.href}}">{{ item.text }}</a></li>
-      </div>
-    </ul>
-  </li>
+  <button mat-button [matMenuTriggerFor]="beforeMenu">{{ item.title }}</button>
+  <mat-menu #beforeMenu="matMenu">
+    <div *ngFor="let item of item.items">
+      <button mat-menu-item>{{ item.text }}</button>
+    </div>
+  </mat-menu>
 </ng-template>
-
-
