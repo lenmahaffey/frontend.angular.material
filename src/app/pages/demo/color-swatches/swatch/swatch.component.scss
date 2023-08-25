@@ -1,4 +1,6 @@
+@use '../../../../../appTheme.scss' as *;
 .swatch{
   height:120px;
   width: 120px;
+  margin-left: 10px;
 }

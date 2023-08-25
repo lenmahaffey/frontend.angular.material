@@ -1,30 +1,24 @@
-<div id="container">
-  <div id="leftSideBar" class="pt-5 bg-dark">
-    <nav class="ms-2">
-      <ul class="nav flex-column" id="nav_accordion">
-          <ng-container
-            *ngFor="let item of menuItems?.itemGroups"
-            [ngTemplateOutlet]="item.items.length == 1 ? singleLink : dropDown"
-            [ngTemplateOutletContext]="{ $implicit: true ? item : item }">
-          </ng-container>
-      </ul>
-    </nav>
-  </div>
-</div>
+  <ul>
+      <ng-container
+        *ngFor="let item of menuItems?.itemGroups"
+        [ngTemplateOutlet]="item.items.length == 1 ? singleLink : dropDown"
+        [ngTemplateOutletContext]="{ $implicit: true ? item : item }">
+      </ng-container>
+  </ul>
 
 <ng-template #singleLink let-item>
-  <li class="nav-item">
-    <a class="nav-link link">{{ item.items[0].text }}</a>
+  <li class="">
+    <a class="link">{{ item.items[0].text }}</a>
   </li>
 </ng-template>
 
 <ng-template #dropDown let-item>
-  <li class="nav-item">
-    <a class="nav-link link" href="#" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + item.id">{{ item.title }}</a>
+  <li class="">
+    <a class="link" href="#" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + item.id">{{ item.title }}</a>
     <ul id="collapse{{item.id}}" class="collapse">
       <div *ngFor="let item of item.items">
         <li>
-          <a class="nav-link subLink" href="#">{{ item.text }}</a>
+          <a class="subLink" href="#">{{ item.text }}</a>
         </li>
       </div>
     </ul>

@@ -5,21 +5,20 @@
   <div id="headerContainer">
     <app-header></app-header>
   </div>
-  <div id="centerContainer">
-    <app-tooltip-manager></app-tooltip-manager>
+  <mat-sidenav-container  id="centerContainer">
     <div id="alertsContainer">
       <app-alert-manager></app-alert-manager>
     </div>
-    <div id="leftSideBarContainer">
-        <app-left-side-bar></app-left-side-bar>
-    </div>
-    <div id="mainBodyContainer">
-      <router-outlet></router-outlet>
-    </div>
-    <div id="rightSideBarContainer">
+    <mat-sidenav id="leftSideBarContainer" opened mode="side">
+      <app-left-side-bar></app-left-side-bar>
+    </mat-sidenav>
+    <mat-sidenav id="rightSideBarContainer" opened mode="side" position="end">
       <app-right-side-bar></app-right-side-bar>
-    </div>
-  </div>
+    </mat-sidenav>
+      <div id="mainBodyContainer">
+        <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-container>
   <div id="notificationsContainer">
       <app-notification-manager></app-notification-manager>
   </div>
