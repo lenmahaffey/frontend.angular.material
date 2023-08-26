@@ -8,14 +8,17 @@ import { ToShortDateStringPipe } from './pipes/to-short-date-string.pipe';
 import { D3Module } from './d3/d3.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
     ToShortTimeStringPipe,
     ConfirmationDialogComponent,
     ToShortDateStringPipe,
+    SpinnerComponent,
   ],
   imports: [
+    MaterialModule
   ],
   exports:[
     ToShortDateStringPipe,
@@ -25,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     D3Module,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers:[
     ToShortDateStringPipe,

@@ -1,4 +1,4 @@
-export class DialogOptions implements DialogOptions
+export class SpinnerOptions
 {
   title: string
   message: string

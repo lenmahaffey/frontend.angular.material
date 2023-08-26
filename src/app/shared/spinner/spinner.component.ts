@@ -1,9 +1,8 @@
-import { DialogConfig } from '@angular/cdk/dialog';
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { DialogOptions } from 'src/app/shared/material/DialogOptions';
+import { SpinnerOptions } from 'src/app/shared/spinner/SpinnerOptions';
 
 @Component({
   selector: 'app-spinner',
@@ -18,7 +17,7 @@ export class SpinnerComponent {
   message = "Spinning"
 
   constructor(private dialogRef: MatDialogRef<SpinnerComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: DialogOptions)
+    @Inject(MAT_DIALOG_DATA) private data: SpinnerOptions)
   {
       this.message = data.message
   }

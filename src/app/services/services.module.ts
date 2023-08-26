@@ -7,7 +7,7 @@ import { TooltipComponent } from './tooltip/tooltip/tooltip.component';
 import { TooltipManagerComponent } from './tooltip/tooltip-manager/tooltip-manager.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatDialog } from '@angular/material/dialog';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
 
 @NgModule({
   providers:[
@@ -20,7 +20,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
     AlertManagerComponent,
     TooltipComponent,
     TooltipManagerComponent,
-    SpinnerComponent,
   ],
   imports: [
     SharedModule,

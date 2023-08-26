@@ -1,13 +1,12 @@
-<div (keydown)="onKeyDown($event)">
-  <div class="modal-header">
-    <h4 class="modal-title">{{ options.title }}</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
-  </div>
-  <div class="modal-body">
-    <p>{{ options.text }}</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="no()">{{ options.noButtonText }}</button>
-    <button type="button" class="btn btn-primary" (click)="yes()">{{ options.yesButtonText }}</button>
+<div id="container" (keydown)="onKeyDown($event)">
+  <div id="dialog">
+    <div mat-dialog-title>{{ data.title }}</div>
+    <mat-dialog-content>
+      <p>{{ data.text }}</p>
+    </mat-dialog-content>
+    <div id="buttons" mat-dialog-actions>
+      <button mat-raised-button color="warn" type="button" class="" (click)="no()">{{ data.noButtonText }}</button>
+      <button mat-raised-button color="primary" type="button" class="" (click)="yes()">{{ data.yesButtonText }}</button>
+    </div>
   </div>
 </div>

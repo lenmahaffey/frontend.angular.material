@@ -1,7 +1,8 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Inject, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationDialogOptions } from './confirmation-dialog-options';
 import { Subject } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -10,16 +11,10 @@ import { Subject } from 'rxjs';
 })
 export class ConfirmationDialogComponent {
 
-  constructor(public activeModal: NgbActiveModal)
+  constructor(private dialogRef: MatDialogRef<ConfirmationDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: ConfirmationDialogOptions)
   {}
   @Output() response: Subject<boolean | null> = new Subject()
-
-  @Input() options: ConfirmationDialogOptions = {
-    title: "",
-    text: "",
-    yesButtonText: "",
-    noButtonText: ""
-  }
 
   onKeyDown(event: any)
   {

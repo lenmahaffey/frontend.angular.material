@@ -11,8 +11,7 @@ import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/
 import { LeftSideBarNavLinks } from './left-side-bar-nav-links';
 import { ToolTipService } from 'src/app/services/tooltip/tooltip.service';
 import { ToolTipPosition } from 'src/app/services/tooltip/tooltip-position';
-import { SpinnerComponent } from 'src/app/services/spinner/spinner.component';
-import { MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-demo',
@@ -31,7 +30,7 @@ export class DemoComponent implements OnDestroy{
   constructor(
     private alertService:AlertService,
     private notificationService: NotificationService,
-    private modalService: NgbModal,
+    private _dialog: MatDialog,
     private appStateService: AppStateService,
     private toolTipService: ToolTipService)
   {
@@ -85,22 +84,23 @@ export class DemoComponent implements OnDestroy{
 
   openConfirmationDialog()
   {
-    let modalOptions: NgbModalOptions = {
-      backdrop:"static",
-      keyboard:false,
-    }
-    let modalRef = this.modalService.open(ConfirmationDialogComponent, modalOptions);
-
-    let options: ConfirmationDialogOptions = {
-      title: "Modal",
+    const bodyRect = document.body.getBoundingClientRect();
+    console.log(bodyRect.width)
+    var config = new MatDialogConfig()
+    config.data =
+    {
+      title: "Demostration Modal",
       text: "This is a modal",
       yesButtonText: "yes",
       noButtonText: "no",
     }
-    modalRef.componentInstance.options = options;
+    config.minWidth = '400px'
+    config.disableClose = true;
+    config.position = { left: ((bodyRect.width / 2) - (Number(config.minWidth.replace("px", "")) / 2 )).toString() + "px", top: '7%' }
+    let modalRef = this._dialog.open(ConfirmationDialogComponent, config);
     let sub = modalRef.componentInstance.response.subscribe((data: boolean | null) => {
         this.setConfirmationResponseMessage(data)
-        this.modalService.dismissAll()
+        this._dialog.closeAll()
         sub.unsubscribe()
       })
   }
