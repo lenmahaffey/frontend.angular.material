@@ -40,6 +40,9 @@
   animation-fill-mode: forwards;
 }
 
+#notification{
+  box-shadow: 5px 10px 25px black;
+}
 #container{
   display: flex;
   align-items: flex-end;

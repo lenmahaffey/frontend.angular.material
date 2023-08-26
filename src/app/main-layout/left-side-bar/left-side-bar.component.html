@@ -1,3 +1,43 @@
+<div id="container">
+  <mat-accordion class="example-headers-align" multi="true">
+    <ng-container
+      *ngFor="let item of menuItems?.itemGroups"
+      [ngTemplateOutlet]="item.items.length == 1 ? singleLink : dropDown"
+      [ngTemplateOutletContext]="{ $implicit: true ? item : item }">
+    </ng-container>
+  </mat-accordion>
+</div>
+
+<ng-template #singleLink let-item>
+  <mat-expansion-panel hideToggle="true" disabled="true">
+    <mat-expansion-panel-header>
+      <a class="link" href="{{item.href}}">{{ item.title }}</a>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</ng-template>
+
+<ng-template #dropDown let-item>
+
+  <mat-expansion-panel hideToggle="true">
+    <mat-expansion-panel-header>
+      <a class="link" href="{{item.href}}">{{ item.title}}</a>
+    </mat-expansion-panel-header>
+
+    <ng-template  matExpansionPanelContent>
+      <div *ngFor="let item of item.items">
+        <a href="{{item.href}}">
+          <mat-expansion-panel hideToggle="true" disabled="true">
+              <mat-expansion-panel-header class="subLink">
+                {{ item.text }}
+              </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </a>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+</ng-template>
+
+<!-- <div id="menu">
   <ul>
       <ng-container
         *ngFor="let item of menuItems?.itemGroups"
@@ -5,6 +45,7 @@
         [ngTemplateOutletContext]="{ $implicit: true ? item : item }">
       </ng-container>
   </ul>
+</div>
 
 <ng-template #singleLink let-item>
   <li class="">
@@ -23,4 +64,4 @@
       </div>
     </ul>
   </li>
-</ng-template>
+</ng-template> -->
