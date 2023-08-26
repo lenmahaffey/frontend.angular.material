@@ -1,8 +1,40 @@
-// .container{
+.container{
+  display: flex;
+  flex-direction: column;
+}
+mat-divider{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 
-//   background-color: red;
-// }
-// .item{
+mat-card{
+  padding: 2%;
+}
 
-//   background-color: green;
-// }
+button{
+  margin: 1%;
+}
+
+#components{
+  display: flex;
+  flex-direction: row;
+}
+
+#dialogs{
+  flex: 1;
+  margin: 1%;
+}
+
+#notification{
+  flex: 1;
+  margin: 1%;
+}
+
+#alert{
+  flex: 1;
+  margin: 1%;
+}
+
+#color{
+  margin: auto;
+}

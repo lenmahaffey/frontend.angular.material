@@ -1,79 +1,91 @@
 <div class="container">
-  <div class="item">
-    <h1 class="">Component demo</h1>
-    <div>
-      <div>{{ confirmationResponseMessage }}</div>
-      <button mat-raised-button color="primary" (click)="openConfirmationDialog()">
-          Open Confirmation Demo
-      </button>
-    </div>
-    <div>
-      <button mat-raised-button color="primary" (click)="openSpinner()">
-        Open Spinner Demo
-      </button>
-    </div>
-    <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
-      <mat-form-field>
-        <mat-label>Type</mat-label>
-        <mat-select id="type" name="type" formControlName="type">
-          <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput type="text" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Text</mat-label>
-        <input matInput type="text" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
-      </mat-form-field>
-
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          (mouseover)="setToolTipText('Click here to open a new notification')"
-          (mouseenter)="toggleToolTipVisibility($event)"
-          (mouseleave)="toggleToolTipVisibility($event)"
-          (mousemove)="setToolTipPosition($event)">
-          Open Notification Demo
-        </button>
-    </form>
-
-    <form [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
-      <mat-form-field>
-        <mat-label>Type</mat-label>
-        <mat-select id="type" name="type" formControlName="type">
-          <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Text</mat-label>
-        <input matInput type="text" id="text" formControlName="text" value="{{alertMessageFormData.text}}"/>
-      </mat-form-field>
-
-
-      <div class="">
-        <mat-slide-toggle (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss">Autodismiss:</mat-slide-toggle>
-
-        <div class="">
-          <mat-form-field>
-            <mat-label>Display Time (in seconds)</mat-label>
-            <input matInput type="text" id="text" formControlName="duration" value="{{ alertMessageFormData.duration }}"/>
-          </mat-form-field>
+  <h1 class="">Component demo</h1>
+  <div id="components">
+    <div id="dialogs">
+      <mat-card>
+        <div>
+          <div>{{ confirmationResponseMessage }}</div>
+          <button mat-raised-button color="primary" (click)="openConfirmationDialog()">
+              Open Confirmation Demo
+          </button>
         </div>
-      </div>
-      <div class="">
-        <button mat-raised-button color="primary" type="submit">
-          Open Alert Demo
-        </button>
-      </div>
-    </form>
+        <div>
+          <button mat-raised-button color="primary" (click)="openSpinner()">
+            Open Spinner Demo
+          </button>
+        </div>
+      </mat-card>
+    </div>
+    <div id="notification">
+      <mat-card>
+        <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select id="type" name="type" formControlName="type">
+              <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput type="text" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Text</mat-label>
+            <input matInput type="text" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
+          </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              (mouseover)="setToolTipText('Click here to open a new notification')"
+              (mouseenter)="toggleToolTipVisibility($event)"
+              (mouseleave)="toggleToolTipVisibility($event)"
+              (mousemove)="setToolTipPosition($event)">
+              Open Notification Demo
+            </button>
+        </form>
+      </mat-card>
+    </div>
+    <div id="alert">
+      <mat-card>
+        <form [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select id="type" name="type" formControlName="type">
+              <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Text</mat-label>
+            <input matInput type="text" id="text" formControlName="text" value="{{alertMessageFormData.text}}"/>
+          </mat-form-field>
+
+
+          <div class="">
+            <mat-slide-toggle (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss">Autodismiss:</mat-slide-toggle>
+
+            <div class="">
+              <mat-form-field>
+                <mat-label>Display Time (in seconds)</mat-label>
+                <input matInput type="text" id="text" formControlName="duration" value="{{ alertMessageFormData.duration }}"/>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="">
+            <button mat-raised-button color="primary" type="submit">
+              Open Alert Demo
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
   </div>
-  <div class="item">
+  <mat-divider></mat-divider>
+  <div id="color" class="item">
     <app-color-swatches></app-color-swatches>
   </div>
 </div>
