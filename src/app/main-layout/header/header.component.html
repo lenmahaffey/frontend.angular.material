@@ -8,14 +8,26 @@
 </mat-toolbar>
 
 <ng-template #singleLink let-item>
-  <button mat-button>{{ item.items[0].text }}</button>
+  <a href="{{item.items[0].href}}">
+    <button mat-button>
+        {{ item.items[0].text }}
+    </button>
+  </a>
 </ng-template>
 
 <ng-template #dropDown let-item>
-  <button class=".mat-body" mat-button [matMenuTriggerFor]="beforeMenu">{{ item.title }}</button>
+  <button class="" mat-button [matMenuTriggerFor]="beforeMenu">
+    <h3>
+      {{ item.title }}
+    </h3>
+  </button>
   <mat-menu #beforeMenu="matMenu">
     <div *ngFor="let item of item.items">
-      <button class="" mat-menu-item>{{ item.text }}</button>
+      <a href="{{item.href}}">
+        <button class="" mat-menu-item>
+            {{ item.text }}
+        </button>
+      </a>
     </div>
   </mat-menu>
 </ng-template>

@@ -1,2 +1,5 @@
-// @use '/src/appTheme.scss' as *;
+@use '/src/appTheme.scss' as *;
 
+a{
+  color: $white;
+}

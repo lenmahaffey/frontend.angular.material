@@ -1,12 +1,14 @@
-<mat-card>
-  <mat-card-title>
-      <h1 >Color Theme</h1>
-  </mat-card-title>
-  <mat-card-content>
+<div id="container">
+  <h1 id="heading">Color Theme</h1>
+  <div id="swatchContainer">
+    <div class="swatch">
     <app-swach [BackgroundClass]="'primary'"></app-swach>
-
+    </div>
+    <div class="swatch">
     <app-swach [BackgroundClass]="'accent'"></app-swach>
-
+    </div>
+    <div class="swatch">
     <app-swach [BackgroundClass]="'warn'"></app-swach>
-  </mat-card-content>
-</mat-card>
+    </div>
+  </div>
+</div>

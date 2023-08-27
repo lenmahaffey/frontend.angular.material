@@ -6,8 +6,8 @@
 @include mat.all-component-themes($app-theme);
 html, body {
   height: 100%;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  // background-color: $light;
+  // font-family: "Roboto";
+  background-color: $white;
   overflow: hidden;
 }
 /* Track */

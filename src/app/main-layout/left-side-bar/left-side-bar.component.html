@@ -11,7 +11,7 @@
 <ng-template #singleLink let-item>
   <mat-expansion-panel hideToggle="true" disabled="true">
     <mat-expansion-panel-header>
-      <a class="link" href="{{item.href}}">{{ item.title }}</a>
+      <a class="link" href="{{item.href}}"><h4>{{ item.title }}</h4></a>
     </mat-expansion-panel-header>
   </mat-expansion-panel>
 </ng-template>
@@ -20,7 +20,7 @@
 
   <mat-expansion-panel hideToggle="true">
     <mat-expansion-panel-header>
-      <a class="link" href="{{item.href}}">{{ item.title}}</a>
+      <a class="link" href="{{item.href}}"><h4>{{ item.title}}</h4></a>
     </mat-expansion-panel-header>
 
     <ng-template  matExpansionPanelContent>
@@ -28,7 +28,7 @@
         <a href="{{item.href}}">
           <mat-expansion-panel hideToggle="true" disabled="true">
               <mat-expansion-panel-header class="subLink">
-                {{ item.text }}
+                <h5>{{ item.text }}</h5>
               </mat-expansion-panel-header>
           </mat-expansion-panel>
         </a>

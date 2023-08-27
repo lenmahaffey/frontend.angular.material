@@ -16,6 +16,26 @@
   margin: auto;
 }
 
+#dialogs{
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+  background-color: red;
+}
+
+#notification{
+  flex: 4 0 auto;
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+}
+
+#alert{
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+}
 mat-card{
   width: 100%;
 }
@@ -47,28 +67,12 @@ button{
   margin: 1%;
 }
 
-#dialogs{
-  flex: 0 0 auto;
+#dialogContainer{
   display: flex;
-  flex-direction: row;
-  margin-right: 2%;
-}
-
-#notification{
-  flex: 4 0 auto;
-  display: flex;
-  flex-direction: row;
-  margin-right: 2%;
-}
-
-#alert{
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: row;
-  margin-right: 2%;
+  flex-direction: column;
 }
 
 #alertContainer{
-  padding: 10%;
+  padding: 5%;
 }
 
