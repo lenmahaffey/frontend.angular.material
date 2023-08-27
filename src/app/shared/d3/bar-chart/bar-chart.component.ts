@@ -49,7 +49,6 @@ export class BarChartComponent implements AfterViewInit{
   }
 
   private drawChart(): void {
-    console.log(d3.selectAll("#" + this.id))
     const svg = d3.select("#" + this.id)
     .attr("width", this.width - 50)
     .attr("height", this.height - 50)

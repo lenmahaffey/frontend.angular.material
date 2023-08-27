@@ -14,8 +14,8 @@ export class PieChartComponent implements AfterViewInit{
   @Input() note = ''
   @Input() data: PieChartData[] = []
   @ViewChild("pie") pie!: ElementRef
-  width = 250
-  height = 250
+  width = 0
+  height = 0
   svg!: any
 
   constructor() {}
@@ -40,7 +40,7 @@ export class PieChartComponent implements AfterViewInit{
     .domain(this.data.map(d => d.Name))
     .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
 
-    let radius = (Math.min(this.width, this.height)) * .45;
+    let radius = (Math.min(this.width, this.height)) * .41;
 
     this.svg = d3.select("#" + this.id)
       .attr("width", this.width)
