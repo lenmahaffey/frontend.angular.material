@@ -14,7 +14,6 @@ export class SwatchComponent {
 
   set BackgroundClass(value: string){
     this._backgroundClass = value
-    console.log(this._backgroundClass)
   }
 
   private _backgroundClass: string = ""

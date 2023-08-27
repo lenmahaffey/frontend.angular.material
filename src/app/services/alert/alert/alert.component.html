@@ -1,5 +1,5 @@
 <div id="container" class="">
-  <div id="alert" class="alert alert-dismissible show {{ getBackgroundClass() }} {{ animation }}" role="alert">
+  <div [@visible]="isVisible"(@visible.done)="onHiddenAnimationEnd($event)" id="alert" class="alert alert-dismissible show {{ getBackgroundClass() }} " role="alert">
       {{ message.text }}
     <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
   </div>

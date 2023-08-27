@@ -72,7 +72,6 @@ export class DemoComponent implements OnDestroy{
 
   sendAlert()
   {
-    console.log(this.alertMessageFormData)
     var message = new Message()
     message.type = parseInt(this.alertMessageFormData.value.type)
     message.title = "" //Unused with alerts
@@ -85,7 +84,6 @@ export class DemoComponent implements OnDestroy{
   openConfirmationDialog()
   {
     const bodyRect = document.body.getBoundingClientRect();
-    console.log(bodyRect.width)
     var config = new MatDialogConfig()
     config.data =
     {
