@@ -1,5 +1,5 @@
 <div id="container">
-  <h1 class="">Component demo</h1>
+  <h1 class=".mat-body">Component demo</h1>
   <div id="components">
     <div id="dialogs">
       <mat-card>
@@ -9,6 +9,7 @@
               Open Confirmation Demo
           </button>
         </div>
+        <mat-divider></mat-divider>
         <div>
           <button mat-raised-button color="primary" (click)="openSpinner()">
             Open Spinner Demo
@@ -19,23 +20,27 @@
     <div id="notification">
       <mat-card>
         <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
-          <mat-form-field>
-            <mat-label>Type</mat-label>
-            <mat-select id="type" name="type" formControlName="type">
-              <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Title</mat-label>
-            <input matInput type="text" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Text</mat-label>
-            <input matInput type="text" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
-          </mat-form-field>
-
+          <div>
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select id="type" name="type" formControlName="type">
+                <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input matInput type="text" id="title" formControlName="title" value="{{notificationMessageFormData.title}}">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Text</mat-label>
+              <input matInput type="text" id="text" formControlName="text" value="{{notificationMessageFormData.text}}"/>
+            </mat-form-field>
+          </div>
+          <div>
             <button
               mat-raised-button
               color="primary"
@@ -46,46 +51,43 @@
               (mousemove)="setToolTipPosition($event)">
               Open Notification Demo
             </button>
+          </div>
         </form>
       </mat-card>
     </div>
     <div id="alert">
-      <mat-card>
+      <mat-card id="alertContainer">
         <form [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
+          <div>
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select id="type" name="type" formControlName="type">
+                <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
           <mat-form-field>
-            <mat-label>Type</mat-label>
-            <mat-select id="type" name="type" formControlName="type">
-              <mat-option *ngFor="let n of keys" [value]="n">{{ types[n] }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Text</mat-label>
-            <input matInput type="text" id="text" formControlName="text" value="{{alertMessageFormData.text}}"/>
-          </mat-form-field>
-
-
-          <div class="">
-            <mat-slide-toggle (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss">Autodismiss:</mat-slide-toggle>
-
-            <div class="">
+              <mat-label>Text</mat-label>
+              <input matInput type="text" id="text" formControlName="text" value="{{alertMessageFormData.text}}"/>
+            </mat-form-field>
+          </div>
+          <div id="dismissRow">
+              <mat-slide-toggle (change)="toggleDuration()" type="checkbox" id="dismiss" name="dismiss" formControlName="dismiss">Autodismiss:</mat-slide-toggle>
               <mat-form-field>
                 <mat-label>Display Time (in seconds)</mat-label>
                 <input matInput type="text" id="text" formControlName="duration" value="{{ alertMessageFormData.duration }}"/>
               </mat-form-field>
-            </div>
           </div>
-          <div class="">
-            <button mat-raised-button color="primary" type="submit">
-              Open Alert Demo
-            </button>
-          </div>
+          <button mat-raised-button color="primary" type="submit">
+            Open Alert Demo
+          </button>
         </form>
       </mat-card>
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div id="color" class="item">
+  <div id="colors">
     <app-color-swatches></app-color-swatches>
   </div>
 </div>

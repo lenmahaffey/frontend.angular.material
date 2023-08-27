@@ -12,10 +12,10 @@
 </ng-template>
 
 <ng-template #dropDown let-item>
-  <button mat-button [matMenuTriggerFor]="beforeMenu">{{ item.title }}</button>
+  <button class=".mat-body" mat-button [matMenuTriggerFor]="beforeMenu">{{ item.title }}</button>
   <mat-menu #beforeMenu="matMenu">
     <div *ngFor="let item of item.items">
-      <button mat-menu-item>{{ item.text }}</button>
+      <button class="" mat-menu-item>{{ item.text }}</button>
     </div>
   </mat-menu>
 </ng-template>
