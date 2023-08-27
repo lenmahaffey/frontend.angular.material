@@ -10,7 +10,7 @@
 <ng-template #singleLink let-item>
   <a href="{{item.items[0].href}}">
     <button mat-button>
-        {{ item.items[0].text }}
+        <div class="linkText">{{ item.items[0].text }}</div>
     </button>
   </a>
 </ng-template>
@@ -18,14 +18,14 @@
 <ng-template #dropDown let-item>
   <button class="" mat-button [matMenuTriggerFor]="beforeMenu">
     <h3>
-      {{ item.title }}
+      <div class="linkText">{{ item.title }}</div>
     </h3>
   </button>
   <mat-menu #beforeMenu="matMenu">
     <div *ngFor="let item of item.items">
       <a href="{{item.href}}">
         <button class="" mat-menu-item>
-            {{ item.text }}
+         {{ item.text }}
         </button>
       </a>
     </div>
