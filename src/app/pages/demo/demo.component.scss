@@ -16,25 +16,13 @@
   margin: auto;
 }
 
-#dialogs{
+.componentContainer{
+  flex: 1 1 0;
   display: flex;
   flex-direction: row;
   margin-right: 2%;
 }
 
-#notification{
-  flex: 4 0 auto;
-  display: flex;
-  flex-direction: row;
-  margin-right: 2%;
-}
-
-#alert{
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: row;
-  margin-right: 2%;
-}
 mat-card{
   width: 100%;
 }
@@ -46,10 +34,6 @@ mat-form-field {
 mat-divider{
   margin-top: 2%;
   margin-bottom: 2%;
-}
-
-mat-card{
-  padding: 2%;
 }
 
 h1{
@@ -71,7 +55,8 @@ button{
   flex-direction: column;
 }
 
-#alertContainer{
+.demoContainer{
   padding: 5%;
 }
+
 

@@ -1,8 +1,8 @@
 <div id="container">
   <h1>Component demo</h1>
   <div id="components">
-    <div id="dialogs">
-      <mat-card>
+    <div id="dialogs" class="componentContainer">
+      <mat-card class="demoContainer">
           <div id="confimation">
             <div>{{ confirmationResponseMessage }}</div>
             <button mat-raised-button
@@ -22,15 +22,15 @@
               #tooltip="matTooltip"
               matTooltip="Click here to open a spinner dialog"
               [matTooltipPosition]="'right'"
-              aria-label="Click here to open a confimation dialog"
+              aria-label="Click here to open a spinner dialog"
               (click)="openSpinner()">
               Open Spinner Demo
             </button>
           </div>
       </mat-card>
     </div>
-    <div id="notification">
-      <mat-card>
+    <div id="notification"  class="componentContainer">
+      <mat-card class="demoContainer">
         <form [formGroup]="notificationMessageFormData" (ngSubmit)="sendNotification()">
           <div>
             <mat-form-field>
@@ -67,8 +67,8 @@
         </form>
       </mat-card>
     </div>
-    <div id="alert">
-      <mat-card id="alertContainer">
+    <div id="alert" class="componentContainer">
+      <mat-card class="demoContainer">
         <form [formGroup]="alertMessageFormData" (ngSubmit)="sendAlert()">
           <div>
             <mat-form-field>

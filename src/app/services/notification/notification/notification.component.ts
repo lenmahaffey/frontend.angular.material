@@ -1,18 +1,54 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Message } from '../../message';
 import { MessageType } from '../../message-type.interface';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+  styleUrls: ['./notification.component.scss'],
+  animations:[
+    trigger('visible', [
+      state('visible',
+        style({
+          transform: 'translateY(0%)',
+          opacity: 1
+        })),
+      state('void, hidden',
+        style({
+          transform: 'translateY(-20%)',
+          opacity: 0,
+        })),
+      state('dismissed',
+        style({
+          transform: 'translateX(100%)',
+          opacity: 0,
+        })),
+      transition('* => visible', animate('500ms')),
+      transition('visible => dismissed', animate('500ms')),
+    ])
+  ]
 })
-export class NotificationComponent {
+export class NotificationComponent implements AfterViewInit {
+
+  constructor(private cdr: ChangeDetectorRef){}
+
+  ngAfterViewInit(): void {
+    this.isVisible = 'visible';
+    this.cdr.detectChanges()
+  }
 
   @Input() message: Message = new Message(MessageType.Success)
   @Output() dismissed: EventEmitter<Message> = new EventEmitter<Message>();
-  animation: string = "showNotification"
+  isVisible: string = 'hidden'
 
+  onDismissedAnimationEnd(event: any)
+  {
+    if(event.toState == "dismissed")
+    {
+      this.dismissed.emit(this.message)
+    }
+  }
   getIconClass()
   {
     switch(this.message.type)
@@ -45,9 +81,6 @@ export class NotificationComponent {
 
   dismissNotification()
   {
-    document.getElementById("notification")?.addEventListener("animationend", () => {
-      this.dismissed.emit(this.message)
-    })
-    this.animation = "dismissNotification"
+    this.isVisible = "dismissed"
   }
 }

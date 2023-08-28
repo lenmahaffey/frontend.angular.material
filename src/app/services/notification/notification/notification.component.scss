@@ -1,44 +1,4 @@
-// @use '../../../../appTheme.scss' as *;
-
-@keyframes hide{
-  to{
-      height:0;
-      display: hidden;
-  }
-}
-
-@keyframes slideInDown {
-  0% {
-      transform: translateY(-20%);
-      opacity: 0;
-  }
-
-  100% {
-      transform: translateY(0);
-      opacity: 1;
-  }
-}
-
-@keyframes slideOutRight {
-  0% {
-      transform: translateX(0%);
-      opacity: 1;
-  }
-
-  100% {
-      transform:  translateX(100%);
-      opacity: 0;
-  }
-}
-
-.showNotification {
-  animation: slideInDown .75s ease-out 0s 1;
-}
-
-.dismissNotification {
-  animation: slideOutRight .5s ease-out 0s 1, hide 0s linear .5s 1;
-  animation-fill-mode: forwards;
-}
+@use '../../../../appTheme.scss' as *;
 
 #notification{
   box-shadow: 5px 10px 25px black;
@@ -53,13 +13,13 @@
 }
 
 .errorBorder {
-  // border-color: $appRed;
+  border-color: $appRed;
 }
 
 .successBorder {
-  // border-color: $appGreen;
+  border-color: $appGreen;
 }
 
 .warningBorder {
-  // border-color: $appYellow;
+  border-color: $appYellow;
 }

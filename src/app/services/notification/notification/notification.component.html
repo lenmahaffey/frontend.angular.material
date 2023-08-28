@@ -1,5 +1,9 @@
 <div id="container">
-  <div id="notification" class="toast show {{ animation }}"  role="alert" aria-live="assertive" aria-atomic="true">
+  <div
+  [@visible]="isVisible"
+  (@visible.done)="onDismissedAnimationEnd($event)"
+  id="notification"
+  class="toast show">
     <div class="toast-header {{ getBorderClass() }}">
       <i class="{{ getIconClass() }}"></i>
       <strong class="me-auto">{{message.title}}</strong>
